@@ -1,3 +1,23 @@
 # cs-340-goldberry-farm-db
 
-Testing pushing from remote flip1...
+## Running the app
+
+Navigate to the root directory of the repo:
+
+```
+$ cd cs-340-goldberry-farm-db
+```
+
+Make sure node 16.13.0 is being used:
+
+```
+$ nvm use 16.13.0
+```
+
+Start the app
+
+```
+$ npm start
+```
+
+View the app on your local server `localhost:5600` or on flip `http://flip1.engr.oregonstate.edu:5600/`
