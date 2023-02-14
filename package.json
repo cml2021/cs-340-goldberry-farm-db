@@ -1,0 +1,25 @@
+{
+  "name": "cs-340-goldberry-farm-db",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cml2021/cs-340-goldberry-farm-db.git"
+  },
+  "author": "Clayton Loftus & Madison Gillis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cml2021/cs-340-goldberry-farm-db/issues"
+  },
+  "homepage": "https://github.com/cml2021/cs-340-goldberry-farm-db#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "forever": "^4.0.3",
+    "nodemon": "^2.0.20"
+  }
+}
