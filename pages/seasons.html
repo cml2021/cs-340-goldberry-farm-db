@@ -1,1 +1,68 @@
-<h1>Seasons</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seasons</title>
+</head>
+<body>
+    <a href="/">Home</a>
+
+    <h1>Manage Seasons</h1>
+
+    <h2>Current Seasons</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>SP</td>
+                <td>spring</td>
+                <td><a href=#>Edit</a></td>
+                <td><a href=#>Delete</a></td>
+            </tr>
+            <tr>
+                <td>SU</td>
+                <td>summer</td>
+                <td><a href=#>Edit</a></td>
+                <td><a href=#>Delete</a></td>
+            </tr>
+            <tr>
+                <td>FA</td>
+                <td>fall</td>
+                <td><a href=#>Edit</a></td>
+                <td><a href=#>Delete</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Add Season</h2>
+    <form action="#">
+        <fieldset>
+            <label for="season-name">Name
+                <input type="text" id="season-name" required>
+            </label>
+        </fieldset>
+        <button type="submit" value="submit">Save</button>
+    </form>
+    
+    <h2>Update Season</h2>
+    <form action="#">
+        <fieldset>
+            <label for="season-name">Name
+                <input type="text" id="season-name" value="summer" required>
+            </label>
+        </fieldset>
+        <button type="submit" value="submit">Save</button>
+    </form>
+
+</body>
+</html>

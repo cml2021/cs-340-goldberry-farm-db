@@ -1,1 +1,94 @@
-<h1>Crops_Seasons</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crops by Season</title>
+</head>
+<body>
+    <a href="/">Home</a>
+
+    <h1>Manage Crops by Season</h1>
+
+    <h2>Crops by Season</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Crop</th>
+                <th>Season</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1SP</td>
+                <td>cauliflower</td>
+                <td>spring</td>
+                <td><a href=#>Edit</a></td>
+                <td><a href=#>Delete</a></td>
+            </tr>
+            <tr>
+                <td>2SU</td>
+                <td>blueberry</td>
+                <td>summer</td>
+                <td><a href=#>Edit</a></td>
+                <td><a href=#>Delete</a></td>
+            </tr>
+            <tr>
+                <td>3SU</td>
+                <td>wheat</td>
+                <td>summer</td>
+                <td><a href=#>Edit</a></td>
+                <td><a href=#>Delete</a></td>
+            </tr>
+            <tr>
+                <td>4FA</td>
+                <td>wheat</td>
+                <td>fall</td>
+                <td><a href=#>Edit</a></td>
+                <td><a href=#>Delete</a></td>
+            </tr>
+            <tr>
+                <td>5FA</td>
+                <td>pumpkin</td>
+                <td>fall</td>
+                <td><a href=#>Edit</a></td>
+                <td><a href=#>Delete</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Add Crop by Season</h2>
+    <form action="#">
+        <fieldset>
+            <label for="crop-name">Crop
+                <input type="text" id="crop-name" required>
+            </label>
+            <br>
+            <label for="season-name">Season
+                <input type="text" id="season-name" required>
+            </label>
+        </fieldset>
+        <button type="submit" value="submit">Save</button>
+    </form>
+    
+    <h2>Update Season</h2>
+    <form action="#">
+        <fieldset>
+            <label for="crop-name">Crop
+                <input type="text" id="crop-name" value="blueberry" required>
+            </label>
+            <br>
+            <label for="season-name">Season
+                <input type="text" id="season-name" value="summer" required>
+            </label>
+        </fieldset>
+        <button type="submit" value="submit">Save</button>
+    </form>
+
+</body>
+</html>
