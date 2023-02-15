@@ -11,17 +11,18 @@
 
     <h1>Manage Sales</h1>
 
-    <h2>Current Sales</h2>
-
+    <div id="read">
+        <h2>Current Sales</h2>
     <table>
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Name</th>
-                <th>Seed Name</th>
+                <th>Customer</th>
+                <th>Crop</th>
                 <th>Quantity</th>
-                <th>Unit Price</th>
-                <th>Year</th>
+                <th>Price</th>
+                <th>Date</th>
+                <th>Shiping Status</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
@@ -29,11 +30,12 @@
         <tbody>
             <tr>
                 <td>1</td>
+                <td>Jodi</td>
                 <td>cauliflower</td>
-                <td>cauliflower</td>
-                <td>100</td>
-                <td>175</td>
-                <td>2023</td>
+                <td>50</td>
+                <td>8750</td>
+                <td>2022-04-10</td>
+                <td>shipped</td>
                 <td><a href=#>Edit</a></td>
                 <td><a href=#>Delete</a></td>
             </tr>
@@ -79,72 +81,89 @@
             </tr>
         </tbody>
     </table>
-
-    <h2>Add Crop</h2>
+    </div>
+    
+    <div id="create">
+        <h2>Add Sale</h2>
     <form action="#">
         <fieldset>
-            <label for="crop-name">Name
-                <input type="text" name="crop-name" required>
+            <label for="sale-name">Name
+                <input type="text" name="sale-name" required>
             </label>
             <br>
             <label for="seed-name">Seed Name
-                <input type="text" name="seed-name" required>
+                <select name="seed-name" id="seed-name">
+                    <option value="cauliflower">cauliflower</option>
+                    <option value="blueberry">blueberry</option>
+                    <option value="wheat">wheat</option>
+                    <option value="pumpkin">pumpkin</option>
+                </select>
             </label>
             <br>
-            <label for="crop-quantity">Quantity
-                <input type="number" name="crop-quantity" required>
+            <label for="sale-quantity">Quantity
+                <input type="number" name="sale-quantity" required>
             </label>
             <br>
-            <label for="crop-unit-price">Unit Price
-                <input type="number" name="crop-unit-price" required>
+            <label for="sale-unit-price">Unit Price
+                <input type="number" name="sale-unit-price" required>
             </label>
             <br>
-            <label for="crop-year">Year
-                <input type="number" name="crop-year" required>
+            <label for="sale-year">Year
+                <input type="number" name="sale-year" required>
             </label>
         </fieldset>
         <button type="submit" value="submit">Add</button>
     </form>
-
-    <h2>Update Crop</h2>
+    </div>
+    
+    <div id="update">
+        <h2>Update Sale</h2>
     <form action="#">
         <fieldset>
-            <label for="crop-name">Name
-                <input type="text" name="crop-name" value = "cauliflower" required>
+            <label for="sale-name">Name
+                <input type="text" name="sale-name" value = "cauliflower" required>
             </label>
             <br>
             <label for="seed-name">Seed Name
-                <input type="text" name="seed-name" value = "cauliflower" required>
+                <select name="seed-name" id="seed-name">
+                    <option value="cauliflower">cauliflower</option>
+                    <option value="blueberry">blueberry</option>
+                    <option value="wheat">wheat</option>
+                    <option value="pumpkin">pumpkin</option>
+                </select>
             </label>
             <br>
-            <label for="crop-quantity">Quantity
-                <input type="number" name="crop-quantity" value = "200" required>
+            <label for="sale-quantity">Quantity
+                <input type="number" name="sale-quantity" value = "200" required>
             </label>
             <br>
-            <label for="crop-unit-price">Unit Price
-                <input type="number" name="crop-unit-price" value = "150" required>
+            <label for="sale-unit-price">Unit Price
+                <input type="number" name="sale-unit-price" value = "150" required>
             </label>
             <br>
-            <label for="crop-year">Year
-                <input type="number" name="crop-year" value = "2023" required>
+            <label for="sale-year">Year
+                <input type="number" name="sale-year" value = "2023" required>
             </label>
         </fieldset>
         <button type="submit" value="submit">Update</button>
     </form>
-
-    <h2>Delete Crop</h2>
+    </div>
+    
+    <div id="delete">
+        <h2>Delete Sale</h2>
     <form action="#">
         <fieldset>
-            <label for="crop-id">ID
-                <input type="text" name="crop-id" value = "1" required>
+            <label for="sale-id">ID
+                <input type="text" name="sale-id" value = "1" required>
             </label>
             <br>
-            <label for="crop-name">Name
-                <input type="text" name="crop-name" value = "cauliflower" required>
+            <label for="sale-name">Name
+                <input type="text" name="sale-name" value = "cauliflower" required>
             </label>
         </fieldset>
         <button type="submit" value="submit">Delete</button>
     </form>
+    </div>
 </body>
 </html>
 
