@@ -11,118 +11,148 @@
 
     <h1>Manage Customers</h1>
 
-    <h2>Current Customers</h2>
+    <div id="read">
+        <h2>Current Customers</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>ZIP Code</th>
+                    <th>Email</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Jodi</td>
+                    <td>1 Willow Lane</td>
+                    <td>Gull City</td>
+                    <td>California</td>
+                    <td>91542</td>
+                    <td>jodi@stardew.com</td>
+                    <td><a href='#update'>Edit</a></td>
+                    <td><a href='#delete'>Delete</a></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Evelyn</td>
+                    <td>1 River Road</td>
+                    <td>Pelican Town</td>
+                    <td>Florida</td>
+                    <td>34787</td>
+                    <td>evelyn@stardew.com</td>
+                    <td><a href='#update'>Edit</a></td>
+                    <td><a href='#delete'>Delete</a></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Robin</td>
+                    <td>24 Mountain Road</td>
+                    <td>Sparrow Village</td>
+                    <td>Ohio</td>
+                    <td>63548</td>
+                    <td>robin@stardew.com</td>
+                    <td><a href='#update'>Edit</a></td>
+                    <td><a href='#delete'>Delete</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Address</th>
-                <th>City</th>
-                <th>State</th>
-                <th>ZIP Code</th>
-                <th>Email</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Jodi</td>
-                <td>1 Willow Lane</td>
-                <td>Gull City</td>
-                <td>California</td>
-                <td>91542</td>
-                <td>jodi@stardew.com</td>
-                <td><a href=#>Edit</a></td>
-                <td><a href=#>Delete</a></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Evelyn</td>
-                <td>1 River Road</td>
-                <td>Pelican Town</td>
-                <td>Florida</td>
-                <td>34787</td>
-                <td>evelyn@stardew.com</td>
-                <td><a href=#>Edit</a></td>
-                <td><a href=#>Delete</a></td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Robin</td>
-                <td>24 Mountain Road</td>
-                <td>Sparrow Village</td>
-                <td>Ohio</td>
-                <td>63548</td>
-                <td>robin@stardew.com</td>
-                <td><a href=#>Edit</a></td>
-                <td><a href=#>Delete</a></td>
-            </tr>
-        </tbody>
-    </table>
+    <div id="create">
+        <h2>Add Customer</h2>
+        <form action="#">
+            <fieldset>
+                <label for="customer-name">Name
+                    <input type="text" name="customer-name" required>
+                </label>
+                <br>
+                <label for="customer-address">Street Address
+                    <input type="text" name="customer-address" required>
+                </label>
+                <br>
+                <label for="customer-city">City
+                    <input type="text" name="customer-city" required>
+                </label>
+                <br>
+                <label for="customer-state">State
+                    <input type="text" name="customer-state" required>
+                </label>
+                <br>
+                <label for="customer-zip">ZIP Code
+                    <input type="number" name="customer-zip" required>
+                </label>
+                <br>
+                <label for="customer-email">Email
+                    <input type="email" name="customer-email" required>
+                </label>
+            </fieldset>
+            <button type="submit" value="submit">Add</button>
+        </form>
+    </div>
 
-    <h2>Add Customer</h2>
-    <form action="#">
-        <fieldset>
-            <label for="customer-name">Name
-                <input type="text" name="customer-name" required>
-            </label>
-            <br>
-            <label for="customer-address">Street Address
-                <input type="text" name="customer-address" required>
-            </label>
-            <br>
-            <label for="customer-city">City
-                <input type="text" name="customer-city" required>
-            </label>
-            <br>
-            <label for="customer-state">State
-                <input type="text" name="customer-state" required>
-            </label>
-            <br>
-            <label for="customer-zip">ZIP Code
-                <input type="number" name="customer-zip" required>
-            </label>
-            <br>
-            <label for="customer-email">Email
-                <input type="email" name="customer-email" required>
-            </label>
-        </fieldset>
-        <button type="submit" value="submit">Save</button>
-    </form>
-    
-    <h2>Update Customer</h2>
-    <form action="#">
-        <fieldset>
-            <label for="customer-name">Name
-                <input type="text" name="customer-name" value="Jodi" required>
-            </label>
-            <br>
-            <label for="customer-address">Street Address
-                <input type="text" name="customer-address" value="1 Willow Lane" required>
-            </label>
-            <br>
-            <label for="customer-city">City
-                <input type="text" name="customer-city" value="Gull City" required>
-            </label>
-            <br>
-            <label for="customer-state">State
-                <input type="text" name="customer-state" value="California" required>
-            </label>
-            <br>
-            <label for="customer-zip">ZIP Code
-                <input type="number" name="customer-zip" value="91542" required>
-            </label>
-            <br>
-            <label for="customer-email">Email
-                <input type="email" name="customer-email" value="jodi@stardew.com">
-            </label>
-        </fieldset>
-        <button type="submit" value="submit">Save</button>
-    </form>
+    <div id="update">
+        <h2>Update Customer</h2>
+        <form action="#">
+            <fieldset>
+                <label for="select-customer">
+                    Select customer to update
+                    <select name="select-customer">
+                        <option value="Jodi" selected="selected">1: Jodi</option>
+                        <option value="Evelyn">2: Evelyn</option>
+                        <option value="Robin">3: Robin</option>
+                    </select>
+                </label>
+            </fieldset>
+            <fieldset>
+                <label for="customer-name">Name
+                    <input type="text" name="customer-name" value="Jodi" required>
+                </label>
+                <br>
+                <label for="customer-address">Street Address
+                    <input type="text" name="customer-address" value="1 Willow Lane" required>
+                </label>
+                <br>
+                <label for="customer-city">City
+                    <input type="text" name="customer-city" value="Gull City" required>
+                </label>
+                <br>
+                <label for="customer-state">State
+                    <input type="text" name="customer-state" value="California" required>
+                </label>
+                <br>
+                <label for="customer-zip">ZIP Code
+                    <input type="number" name="customer-zip" value="91542" required>
+                </label>
+                <br>
+                <label for="customer-email">Email
+                    <input type="email" name="customer-email" value="jodi@stardew.com">
+                </label>
+            </fieldset>
+            <button type="submit" value="submit">Update</button>
+        </form>
+    </div>
+
+    <div id="delete">
+        <h2>Delete Customer</h2>
+        <form action="#">
+            <fieldset>
+                <label for="select-customer">Select customer to delete</label>
+                <select name="select-season">
+                    <option value="Jodi">1: Jodi</option>
+                    <option value="Evelyn">2: Evelyn</option>
+                    <option value="Robin" selected="selected">3: Robin</option>
+                </select>
+            </fieldset>
+            <button type="submit" value="submit">Delete</button>
+        </form>
+    </div>
 
 </body>
 </html>
