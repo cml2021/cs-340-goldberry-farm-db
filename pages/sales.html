@@ -12,6 +12,139 @@
     <h1>Manage Sales</h1>
 
     <h2>Current Sales</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Seed Name</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+                <th>Year</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>cauliflower</td>
+                <td>cauliflower</td>
+                <td>100</td>
+                <td>175</td>
+                <td>2023</td>
+                <td><a href=#>Edit</a></td>
+                <td><a href=#>Delete</a></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>blueberry</td>
+                <td>blueberry</td>
+                <td>300</td>
+                <td>150</td>
+                <td>2021</td>
+                <td><a href=#>Edit</a></td>
+                <td><a href=#>Delete</a></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>wheat</td>
+                <td>wheat</td>
+                <td>50</td>
+                <td>25</td>
+                <td>2022</td>
+                <td><a href=#>Edit</a></td>
+                <td><a href=#>Delete</a></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>wheat</td>
+                <td>wheat</td>
+                <td>100</td>
+                <td>25</td>
+                <td>2022</td>
+                <td><a href=#>Edit</a></td>
+                <td><a href=#>Delete</a></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>pumpkin</td>
+                <td>pumpkin</td>
+                <td>250</td>
+                <td>320</td>
+                <td>2023</td>
+                <td><a href=#>Edit</a></td>
+                <td><a href=#>Delete</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Add Crop</h2>
+    <form action="#">
+        <fieldset>
+            <label for="crop-name">Name
+                <input type="text" name="crop-name" required>
+            </label>
+            <br>
+            <label for="seed-name">Seed Name
+                <input type="text" name="seed-name" required>
+            </label>
+            <br>
+            <label for="crop-quantity">Quantity
+                <input type="number" name="crop-quantity" required>
+            </label>
+            <br>
+            <label for="crop-unit-price">Unit Price
+                <input type="number" name="crop-unit-price" required>
+            </label>
+            <br>
+            <label for="crop-year">Year
+                <input type="number" name="crop-year" required>
+            </label>
+        </fieldset>
+        <button type="submit" value="submit">Add</button>
+    </form>
+
+    <h2>Update Crop</h2>
+    <form action="#">
+        <fieldset>
+            <label for="crop-name">Name
+                <input type="text" name="crop-name" value = "cauliflower" required>
+            </label>
+            <br>
+            <label for="seed-name">Seed Name
+                <input type="text" name="seed-name" value = "cauliflower" required>
+            </label>
+            <br>
+            <label for="crop-quantity">Quantity
+                <input type="number" name="crop-quantity" value = "200" required>
+            </label>
+            <br>
+            <label for="crop-unit-price">Unit Price
+                <input type="number" name="crop-unit-price" value = "150" required>
+            </label>
+            <br>
+            <label for="crop-year">Year
+                <input type="number" name="crop-year" value = "2023" required>
+            </label>
+        </fieldset>
+        <button type="submit" value="submit">Update</button>
+    </form>
+
+    <h2>Delete Crop</h2>
+    <form action="#">
+        <fieldset>
+            <label for="crop-id">ID
+                <input type="text" name="crop-id" value = "1" required>
+            </label>
+            <br>
+            <label for="crop-name">Name
+                <input type="text" name="crop-name" value = "cauliflower" required>
+            </label>
+        </fieldset>
+        <button type="submit" value="submit">Delete</button>
+    </form>
 </body>
 </html>
 

@@ -11,7 +11,124 @@
 
     <h1>Manage Seeds</h1>
 
-    <h2>Current Seeds</h2>
+    <div id="read">
+        <h2>Current Seeds</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Growth Days</th>
+                <th>Can it Regrow?</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>cauliflower</td>
+                <td>80</td>
+                <td>12</td>
+                <td>no</td>
+                <td><a href=#>Edit</a></td>
+                <td><a href=#>Delete</a></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>blueberry</td>
+                <td>80</td>
+                <td>13</td>
+                <td>yes</td>
+                <td><a href=#>Edit</a></td>
+                <td><a href=#>Delete</a></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>wheat</td>
+                <td>10</td>
+                <td>4</td>
+                <td>no</td>
+                <td><a href=#>Edit</a></td>
+                <td><a href=#>Delete</a></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>pumpkin</td>
+                <td>100</td>
+                <td>13</td>
+                <td>no</td>
+                <td><a href=#>Edit</a></td>
+                <td><a href=#>Delete</a></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    
+    <div id="create">
+        <h2>Add Seed</h2>
+    <form action="#">
+        <fieldset>
+            <label for="seed-name">Name
+                <input type="text" name="crop-name" required>
+            </label>
+            <br>
+            <label for="seed-price">Seed Name
+                <input type="text" name="seed-name" required>
+            </label>
+            <br>
+            <label for="growth-days">Quantity
+                <input type="number" name="crop-quantity" required>
+            </label>
+            <br>
+            <label for="can-regrow">Unit Price
+                <input type="number" name="crop-unit-price" required>
+            </label>
+        </fieldset>
+        <button type="submit" value="submit">Add</button>
+    </form>
+    </div>
+    
+    <div id="update">
+        <h2>Update Crop</h2>
+    <form action="#">
+        <fieldset>
+            <label for="seed-name">Name
+                <input type="text" name="crop-name" required>
+            </label>
+            <br>
+            <label for="seed-price">Seed Name
+                <input type="text" name="seed-name" required>
+            </label>
+            <br>
+            <label for="growth-days">Quantity
+                <input type="number" name="crop-quantity" required>
+            </label>
+            <br>
+            <label for="can-regrow">Unit Price
+                <input type="number" name="crop-unit-price" required>
+            </label>
+        </fieldset>
+        <button type="submit" value="submit">Update</button>
+    </form>
+    </div>
+    
+    <div id="delete">
+        <h2>Delete Crop</h2>
+    <form action="#">
+        <fieldset>
+            <label for="crop-id">ID
+                <input type="text" name="crop-id" value = "1" required>
+            </label>
+            <br>
+            <label for="crop-name">Name
+                <input type="text" name="crop-name" value = "cauliflower" required>
+            </label>
+        </fieldset>
+        <button type="submit" value="submit">Delete</button>
+    </form>
+    </div>
 </body>
 </html>
 
