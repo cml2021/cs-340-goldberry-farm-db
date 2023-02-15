@@ -39,24 +39,38 @@
 -- TODO
 
 ------------------------------------------------------------------------------------
--- SEASONS 
+-- SEASONS
 ------------------------------------------------------------------------------------
 
 -- Query for select all seasons
--- Angle brackets '<' '>' used to denote the variables that will have data from Node
--- TODO
+SELECT 
+    * 
+FROM 
+    Seasons;
 
 -- Query for add a new season
 -- Angle brackets '<' '>' used to denote the variables that will have data from Node
--- TODO
+INSERT INTO 
+    Seasons (season_id, name)
+VALUES 
+    (<season_id>, <season_name>);
 
 -- Query for update a season
 -- Angle brackets '<' '>' used to denote the variables that will have data from Node
--- TODO
+UPDATE 
+    Seasons
+SET
+    name = <season_name>
+WHERE
+    season_id = <season_id>;
 
 -- Query for delete a season
 -- Angle brackets '<' '>' used to denote the variables that will have data from Node
--- TODO
+DELETE
+FROM 
+    Seasons
+WHERE
+    season_id = <season_id>;
 
 ------------------------------------------------------------------------------------
 -- SALES
@@ -79,41 +93,76 @@
 -- TODO
 
 ------------------------------------------------------------------------------------
--- CUSTOMERS
+-- CUSTOMERS #TODO CLAY
 ------------------------------------------------------------------------------------
 
 -- Query for select all customers
--- Angle brackets '<' '>' used to denote the variables that will have data from Node
--- TODO
+SELECT 
+    name, address, city, state, zipcode, email
+FROM
+    Customers;
 
 -- Query for add a new customer
 -- Angle brackets '<' '>' used to denote the variables that will have data from Node
--- TODO
+INSERT INTO 
+    Customers (name, address, city, state, zipcode, email)
+VALUES
+    (<customer_name>, <customer_address>, <customer_city>, <customer_state>, <customer_zip>, <customer_email>);
 
 -- Query for update a customer
 -- Angle brackets '<' '>' used to denote the variables that will have data from Node
--- TODO
+UPDATE 
+    Customers
+SET
+    name = <customer_name>,
+    address = <customer_address>,
+    city = <customer_city>,
+    state = <customer_state>,
+    zipcode = <customer_zip>,
+    email = <customer_email>
+
+WHERE
+    customer_id = <customer_id>;
 
 -- Query for delete a customer
 -- Angle brackets '<' '>' used to denote the variables that will have data from Node
--- TODO
+DELETE
+FROM 
+    Customers
+WHERE
+    customer_id = <customer_id>;
 
 ------------------------------------------------------------------------------------
--- CROPS_SEASONS
+-- CROPS_SEASONS #TODO CLAY
 ------------------------------------------------------------------------------------
 
 -- Query for select all crops_seasons
--- Angle brackets '<' '>' used to denote the variables that will have data from Node
--- TODO
+SELECT 
+    crop_id, season_id
+FROM
+    Crops_Seasons;
 
 -- Query for add a new crop_season
 -- Angle brackets '<' '>' used to denote the variables that will have data from Node
--- TODO
+INSERT INTO 
+    Crops_Seasons
+VALUES
+    (<crop_id>, <season_id>);
 
 -- Query for update a crop_season
 -- Angle brackets '<' '>' used to denote the variables that will have data from Node
--- TODO
+UPDATE
+    Crops_Seasons
+SET
+    crop_id = <crop_id>,
+    season_id = <season_id>
+WHERE
+    crop_season_id = <crop_season_id>;
 
 -- Query for delete a crop_season
 -- Angle brackets '<' '>' used to denote the variables that will have data from Node
--- TODO
+DELETE 
+FROM
+    Crops_Seasons
+WHERE
+    crop_season_id = <crop_season_id>;
