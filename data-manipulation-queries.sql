@@ -1,42 +1,57 @@
+-- Goldberry Farm Database Data Manipulation Queries
+-- CS 340 Group 56
+-- Madison Gillis & Clayton Loftus
+
 ------------------------------------------------------------------------------------
 -- SEEDS 
 ------------------------------------------------------------------------------------
 
--- Query for select all seeds
--- Angle brackets '<' '>' used to denote the variables that will have data from Node
--- TODO
+-- read
+-- Colon ':' used to denote the variables that will have data from Node
+SELECT Seeds.seed_id, Seeds.name, Seeds.price, Seeds.growth_days, Seeds.can_regrow
+FROM Seeds;
 
--- Query for add a new seed
--- Angle brackets '<' '>' used to denote the variables that will have data from Node
--- TODO
+-- create
+-- Colon ':' used to denote the variables that will have data from Node
+INSERT INTO Seeds (name, price, growth_days, can_regrow)
+VALUES (:seed_name_input, :seed_price_input, :seed_growth_days_input, seed_can_regrow_input);
 
--- Query for update a seed
--- Angle brackets '<' '>' used to denote the variables that will have data from Node
--- TODO
+-- delete
+-- Colon ':' used to denote the variables that will have data from Node
+DELETE FROM Seeds WHERE Seeds.name = :seed_name_input;
 
--- Query for delete a seed
--- Angle brackets '<' '>' used to denote the variables that will have data from Node
--- TODO
+-- update
+-- Colon ':' used to denote the variables that will have data from Node
+UPDATE Seeds
+SET Seeds.name = :seed_name_input, Seeds.price = :seed_price_input, Seeds.growth_days = :seed_growth_days_input, 
+    Seeds.can_regrow = :seed_can_regrow_input
+WHERE Seeds.seed_id = :seed_id_input;
 
 ------------------------------------------------------------------------------------
 -- CROPS 
 ------------------------------------------------------------------------------------
 
--- Query for select all crops
--- Angle brackets '<' '>' used to denote the variables that will have data from Node
--- TODO
+-- read
+-- Colon ':' used to denote the variables that will have data from Node
+SELECT Crops.crop_id, Crops.name, Seeds.name AS seed_name, Crops.quantity, Crops.unit_price, Crops.year
+FROM Crops
+INNER JOIN Seeds ON Crops.seed_id = Seeds.seed_id;
 
--- Query for add a new crop
--- Angle brackets '<' '>' used to denote the variables that will have data from Node
--- TODO
+-- create
+-- Colon ':' used to denote the variables that will have data from Node
+INSERT INTO Crops (Crops.name, seed_name, Crops.quantity, Crops.unit_price, Crops.year)
+VALUES (:crop_name_input, :seed_name_input, :crop_quantity_input, :crop_unit_price_input, :crop_year_input);
 
--- Query for update a crop
--- Angle brackets '<' '>' used to denote the variables that will have data from Node
--- TODO
+-- delete
+-- Colon ':' used to denote the variables that will have data from Node
+DELETE FROM Crops WHERE Crops.name = :crop_name_input;
 
--- Query for delete a crop
--- Angle brackets '<' '>' used to denote the variables that will have data from Node
--- TODO
+-- update
+-- Colon ':' used to denote the variables that will have data from Node
+UPDATE Crops
+SET Crops.name = :crop_name_input, seed_name = :seed_name_input, Crops.quantity = :crop_quantity_input
+	Crops.unit_price = :crop_unit_price_input, Crops.year = :crop_year_input
+WHERE Crops.crop_id = :crop_id_input;
 
 ------------------------------------------------------------------------------------
 -- SEASONS
@@ -76,21 +91,28 @@ WHERE
 -- SALES
 ------------------------------------------------------------------------------------
 
--- Query for select all sales records
--- Angle brackets '<' '>' used to denote the variables that will have data from Node
--- TODO
+- read
+-- Colon ':' used to denote the variables that will have data from Node
+SELECT Sales.sale_id, Customers.name AS customer, Crops.name AS crop, Sales.quantity, Sales.price, Sales.date, Sales.is_shipped AS shipping_status
+FROM Sales
+INNER JOIN Customers ON Sales.customer_id = Customers.customer_id
+INNER JOIN Crops ON Sales.crop_id = Crops.crop_id;
 
--- Query for add a new sale record
--- Angle brackets '<' '>' used to denote the variables that will have data from Node
--- TODO
+-- create
+-- Colon ':' used to denote the variables that will have data from Node
+INSERT INTO Sales (Sales.sale_id, customer, crop, Sales.quantity, Sales.price, Sales.date, shipping_status)
+VALUES (:customer_name_input, :crop_name_input, :sale_quantity_input, :sale_price_input, :sale_date_input, :sale_is_shipped_input);
 
--- Query for update a sale record
--- Angle brackets '<' '>' used to denote the variables that will have data from Node
--- TODO
+-- delete
+-- Colon ':' used to denote the variables that will have data from Node
+DELETE FROM Sales WHERE Sales.sale_id = :sale_id_input;
 
--- Query for delete a sale record
--- Angle brackets '<' '>' used to denote the variables that will have data from Node
--- TODO
+-- update
+-- Colon ':' used to denote the variables that will have data from Node
+UPDATE Sales
+SET customer = :customer_name_input, crop = :crop_name_input, Sales.quantity = :sale_quantity_input,
+	Sales.price = :sale_price_input, Sales.date = :sale_date_input, shippint_status = :sale_is_shipped_input
+WHERE Sales.sale_id = :sale_id_input;
 
 ------------------------------------------------------------------------------------
 -- CUSTOMERS
