@@ -39,5 +39,12 @@ FROM Sales
 INNER JOIN Customers ON Sales.customer_id = Customers.customer_id
 INNER JOIN Crops ON Sales.crop_id = Crops.crop_id;
 -- create
+INSERT INTO Sales (Sales.sale_id, customer, crop, Sales.quantity, Sales.price, Sales.date, shipping_status)
+VALUES (:customer_name_input, :crop_name_input, :sale_quantity_input, :sale_price_input, :sale_date_input, :sale_is_shipped_input);
 -- delete
+DELETE FROM Sales WHERE Sales.sale_id = :sale_id_input;
 -- update
+UPDATE Sales
+SET customer = :customer_name_input, crop = :crop_name_input, Sales.quantity = :sale_quantity_input,
+	Sales.price = :sale_price_input, Sales.date = :sale_date_input, shippint_status = :sale_is_shipped_input
+WHERE Sales.sale_id = :sale_id_input;
