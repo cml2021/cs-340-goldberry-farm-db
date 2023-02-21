@@ -170,22 +170,24 @@
         <button type="submit" value="submit">Update</button>
     </form>
     </div>
-    
+
     <div id="delete">
         <h2>Delete Crop</h2>
-    <form action="#">
-        <fieldset>
-            <label for="crop-id">ID
-                <input type="text" name="crop-id" value="1" required>
-            </label>
-            <br>
-            <label for="crop-name">Name
-                <input type="text" name="crop-name" value="cauliflower" required>
-            </label>
-        </fieldset>
-        <button type="submit" value="submit">Delete</button>
-    </form>
+        <form action="#">
+            <fieldset>
+                <label for="select-crop">Select crop to delete</label>
+                <select name="select-crop">
+                    <option value="cauliflower">1: cauliflower</option>
+                    <option value="blueberry">2: blueberry</option>
+                    <option value="wheat 1" selected="selected">3: wheat</option>
+                    <option value="wheat 2">4: wheat</option>
+                    <option value="pumpkin">5: pumpkin</option>
+                </select>
+            </fieldset>
+            <button type="submit" value="submit">Delete</button>
+        </form>
     </div>
+
 </body>
 </html>
 

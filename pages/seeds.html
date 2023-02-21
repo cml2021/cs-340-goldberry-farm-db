@@ -151,22 +151,23 @@
         <button type="submit" value="submit">Update</button>
     </form>
     </div>
-    
+
     <div id="delete">
         <h2>Delete Seed</h2>
-    <form action="#">
-        <fieldset>
-            <label for="seed-id">ID
-                <input type="text" name="seed-id" value = "1" required>
-            </label>
-            <br>
-            <label for="seed-name">Name
-                <input type="text" name="seed-name" value = "cauliflower" required>
-            </label>
-        </fieldset>
-        <button type="submit" value="submit">Delete</button>
-    </form>
+        <form action="#">
+            <fieldset>
+                <label for="select-crop">Select seed to delete</label>
+                <select name="select-crop">
+                    <option value="cauliflower">1: cauliflower</option>
+                    <option value="blueberry">2: blueberry</option>
+                    <option value="wheat" selected="selected">3: wheat</option>
+                    <option value="pumpkin">4: pumpkin</option>
+                </select>
+            </fieldset>
+            <button type="submit" value="submit">Delete</button>
+        </form>
     </div>
+
 </body>
 </html>
 
