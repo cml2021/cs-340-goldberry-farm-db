@@ -21,6 +21,7 @@
                 <th>Price</th>
                 <th>Growth Days</th>
                 <th>Can it Regrow?</th>
+                <th>Related Crop</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
@@ -32,6 +33,7 @@
                 <td>80</td>
                 <td>12</td>
                 <td>no</td>
+                <td>cauliflower</td>
                 <td><a href=#>Edit</a></td>
                 <td><a href=#>Delete</a></td>
             </tr>
@@ -41,6 +43,7 @@
                 <td>80</td>
                 <td>13</td>
                 <td>yes</td>
+                <td>blueberry</td>
                 <td><a href=#>Edit</a></td>
                 <td><a href=#>Delete</a></td>
             </tr>
@@ -50,6 +53,7 @@
                 <td>10</td>
                 <td>4</td>
                 <td>no</td>
+                <td>None</td>
                 <td><a href=#>Edit</a></td>
                 <td><a href=#>Delete</a></td>
             </tr>
@@ -59,6 +63,7 @@
                 <td>100</td>
                 <td>13</td>
                 <td>no</td>
+                <td>None</td>
                 <td><a href=#>Edit</a></td>
                 <td><a href=#>Delete</a></td>
             </tr>
@@ -88,6 +93,16 @@
                     <option value="no">no</option>
                 </select>
             </label>
+            <br>
+            <label for="related-crop">Related Crop
+                <select name="related-crop id="related-crop>
+                    <option value="cauliflower">cauliflower</option>
+                    <option value="blueberry">blueberry</option>
+                    <option value="wheat">wheat</option>
+                    <option value="pumpkin">pumpkin</option>
+                    <option value="none">None</option>
+                </select>
+            </label>
         </fieldset>
         <button type="submit" value="submit">Add</button>
     </form>
@@ -115,6 +130,15 @@
                     <option value="no">no</option>
                 </select>
             </label>
+            <br>
+            <label for="related-crop">Related Crop
+                <select name="related-crop id="related-crop>
+                    <option value="cauliflower">cauliflower</option>
+                    <option value="blueberry">blueberry</option>
+                    <option value="wheat">wheat</option>
+                    <option value="pumpkin">pumpkin</option>
+                    <option value="none">None</option>
+                </select>
         </fieldset>
         <button type="submit" value="submit">Update</button>
     </form>
