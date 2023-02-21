@@ -20,8 +20,6 @@
                     <th>ID</th>
                     <th>Crop</th>
                     <th>Season</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,120 +27,30 @@
                     <td>1SP</td>
                     <td>cauliflower</td>
                     <td>spring</td>
-                    <td><a href='#update'>Edit</a></td>
-                    <td><a href='#delete'>Delete</a></td>
                 </tr>
                 <tr>
                     <td>2SU</td>
                     <td>blueberry</td>
                     <td>summer</td>
-                    <td><a href='#update'>Edit</a></td>
-                    <td><a href='#delete'>Delete</a></td>
                 </tr>
                 <tr>
                     <td>3SU</td>
                     <td>wheat</td>
                     <td>summer</td>
-                    <td><a href='#update'>Edit</a></td>
-                    <td><a href='#delete'>Delete</a></td>
                 </tr>
                 <tr>
                     <td>4FA</td>
                     <td>wheat</td>
                     <td>fall</td>
-                    <td><a href='#update'>Edit</a></td>
-                    <td><a href='#delete'>Delete</a></td>
                 </tr>
                 <tr>
                     <td>5FA</td>
                     <td>pumpkin</td>
                     <td>fall</td>
-                    <td><a href='#update'>Edit</a></td>
-                    <td><a href='#delete'>Delete</a></td>
                 </tr>
             </tbody>
         </table>
     </div>
-
-    <div id="create">
-        <h2>Add Crop by Season</h2>
-        <form action="#">
-            <fieldset>
-                <label for="select-crop">Select Crop
-                    <select name="select-crop" required>
-                        <option value="1">1: cauliflower</option>
-                        <option value="2" selected="selected">2: blueberry</option>
-                        <option value="3">3: wheat</option>
-                        <option value="4">4: wheat</option>
-                        <option value="5">5: pumpkin</option>
-                    </select>
-                </label>
-                <br>
-                <label for="select-season">Select Season
-                    <select name="select-season" required>
-                        <option value="SP">SP: spring</option>
-                        <option value="SU" selected="selected">SU: summer</option>
-                        <option value="FA">FA: fall</option>
-                    </select>
-                </label>
-            </fieldset>
-            <button type="submit" value="submit">Add</button>
-        </form>
-    </div>
     
-    <div id="update">
-        <h2>Update Crop by Season</h2>
-        <form action="#">
-            <fieldset>
-                <label for="select-crop-season">Select Crop by Season to update
-                    <select name="select-crop-season">
-                        <option value="1SP">1SP: cauliflower spring</option>
-                        <option value="2SU">2SU: blueberry summer</option>
-                        <option value="3SU">3SU: wheat summer</option>
-                        <option value="4FA">4FA: wheat fall</option>
-                        <option value="5FA">5FA: pumpkin fall</option>
-                    </select>
-                </label>
-            </fieldset>
-            <fieldset>
-                <label for="select-crop">Select Crop
-                    <select name="select-crop" required>
-                        <option value="1">1: cauliflower</option>
-                        <option value="2" selected="selected">2: blueberry</option>
-                        <option value="3">3: wheat</option>
-                        <option value="4">4: wheat</option>
-                        <option value="5">5: pumpkin</option>
-                    </select>
-                </label>
-                <br>
-                <label for="select-season">Select Season
-                    <select name="select-season" required>
-                        <option value="SP">SP: spring</option>
-                        <option value="SU" selected="selected">SU: summer</option>
-                        <option value="FA">FA: fall</option>
-                    </select>
-                </label>
-            </fieldset>
-            <button type="submit" value="submit">Update</button>
-        </form>
-    </div>
-
-    <div id="delete">
-        <h2>Delete Crop by Season</h2>
-        <form action="#">
-            <fieldset>
-                <label for="select-crop-season">Select crop by season to delete</label>
-                <select name="select-crop-season">
-                    <option value="1SP">1SP: cauliflower spring</option>
-                    <option value="2SU">2SU: blueberry summer</option>
-                    <option value="3SU">3SU: wheat summer</option>
-                    <option value="4FA">4FA: wheat fall</option>
-                    <option value="5FA">5FA: pumpkin fall</option>
-                </select>
-            </fieldset>
-            <button type="submit" value="submit">Delete</button>
-        </form>
-    </div>
-
 </body>
 </html>
