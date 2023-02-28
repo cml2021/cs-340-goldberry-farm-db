@@ -119,24 +119,29 @@ app.get("/", function(req, res) {
 	res.render('index');
 });
 
-app.get("/seeds", function (req, res) {
-	res.sendFile(path.join(__dirname, "/pages/seeds.html"));
-});
+app.get("/seeds", function(req, res) {
+	res.render('seeds');
+})
+
 app.get("/crops", function (req, res) {
-	res.sendFile(path.join(__dirname, "/pages/crops.html"));
+	res.render('crops');
 });
+
 app.get("/seasons", function (req, res) {
-	res.sendFile(path.join(__dirname, "/pages/seasons.html"));
+	res.render('seasons');
 });
 app.get("/sales", function (req, res) {
-	res.sendFile(path.join(__dirname, "/pages/sales.html"));
+	res.render('sales');
 });
+
 app.get("/customers", function (req, res) {
-	res.sendFile(path.join(__dirname, "/pages/customers.html"));
+	res.render('customers');
 });
+
 app.get("/crops-seasons", function (req, res) {
-	res.sendFile(path.join(__dirname, "/pages/crops-seasons.html"));
+	res.render('crops-seasons');
 });
+
 // listener
 app.listen(PORT, function () {
 	console.log(`Server started on PORT ${PORT}...`);
