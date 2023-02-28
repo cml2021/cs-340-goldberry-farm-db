@@ -19,6 +19,7 @@
   "homepage": "https://github.com/cml2021/cs-340-goldberry-farm-db#readme",
   "dependencies": {
     "express": "^4.18.2",
+    "express-handlebars": "^6.0.7",
     "forever": "^4.0.3",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.20"
