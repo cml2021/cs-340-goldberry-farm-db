@@ -124,10 +124,31 @@ app.get("/", function(req, res) {
 
 // Seeds
 app.get("/seeds", function(req, res) {
-	let listSeeds = "SELECT Seeds.seed_id AS ID, Seeds.name AS Name, Seeds.price AS Price, Seeds.growth_days AS GrowthDays, Seeds.can_regrow AS CanItRegrow FROM Seeds;"
+	let listSeeds = "SELECT Seeds.seed_id AS ID, Seeds.name AS Name, Seeds.price AS Price, Seeds.growth_days AS GrowthDays, Seeds.can_regrow AS CanItRegrow FROM Seeds;";
+	let getCropName = "SELECT * FROM Crops;";
 
 	db.pool.query(listSeeds, function(error, rows, fields){
-		res.render('seeds', {data: rows});
+		let seeds = rows;
+		db.pool.query(getCropName, (error, rows, fields) => {
+			let crops = rows;
+			return res.render('seeds', {data: seeds, crops: crops});
+		})
+	})
+});
+
+app.post("/add-seed-form", function(req, res){
+	let data = req.body;
+
+	addSeed = `INSERT INTO Seeds (name, price, growth_days, can_regrow) VALUES ('${data['seed-name']}', '${data['seed-price']}', '${data['growth-days']}', '${data['can-regrow']}')`;
+
+	db.pool.query(addSeed, function(error, rows, fields){
+		if (error) {
+			console.log(error)
+			res.sendStatus(400);
+		}
+		else {
+			res.redirect('/seeds')
+		}
 	})
 });
 
@@ -158,7 +179,7 @@ app.post("/add-season", function(req, res) {
 			res.redirect("/seasons");
 		}
 	})
-})
+});
 
 
 app.get("/sales", function (req, res) {

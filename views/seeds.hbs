@@ -20,6 +20,7 @@
                     {{@key}}
                 </th>
                 {{/each}}
+                {{!--- <th>Related Crop</th> --}}
             </tr>
         </thead>
         <tbody>
@@ -30,6 +31,7 @@
                 <td>{{this.Price}}</td>
                 <td>{{this.GrowthDays}}</td>
                 <td>{{this.CanItRegrow}}</td>
+                {{!-- can't figure out how to add the related crop to the table --}}
             </tr>
             {{/each}}
         </tbody>
@@ -37,7 +39,33 @@
 </div>
 
 <div id="add-seed">
-    {{!-- TODO --}}
+    <h2>Add Seed</h2>
+    <form id="add-seed-form" method="POST" action="/add-seed-form">
+        <fieldset>
+            <label for="seed-name">Name
+                <input type="text" name="seed-name" id="seed-name" required>
+            </label>
+            <label for="seed-price">Price
+                <input type="number" name="seed-price" id="seed-price" required>
+            </label>
+            <label for="growth-days">Days to Grow
+                <input type="number" name="growth-days" id="growth-days" required>
+            </label>
+            <label for="can-regrow">Can it Regrow? (0 = no, 1 = yes)
+                <input type="number" name="can-regrow" id="can-regrow" required>
+            </label>
+            <label for="related-crop">Related Crop
+                <select name="related-crop" id="related-crop">
+                    <option value="">Select a Crop</option>
+                    {{#each crops}}
+                    <option value="{{this.crop_id}}">{{this.name}}</option>
+                    {{/each}}
+                    <option value="none">none</option>
+                </select>
+            </label>
+        </fieldset>
+        <button type="submit" value="submit">Add</button>
+    </form>
 </div>
 
 <div id="update-seed">
