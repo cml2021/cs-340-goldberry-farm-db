@@ -1,1 +1,33 @@
-<h1>Seasons go here</h1>
+<div class="nav">
+	<a href="/">Home |</a>
+	<a href="/seeds"> Seeds |</a>
+	<a href="/crops"> Crops |</a>
+	<a href="/seasons"> Seasons |</a>
+	<a href="/sales"> Sales |</a>
+	<a href="/customers"> Customers |</a>
+	<a href="/crops-seasons"> Crops by Season</a>
+</div>
+
+<h1>Manage Seasons</h1>
+
+<div id="list-seasons">
+    <table>
+        <thead>
+            <tr>
+                {{#each data.[0]}}
+                <th>
+                    {{@key}}
+                </th>
+                {{/each}}
+            </tr>
+        </thead>
+        <tbody>
+            {{#each data}}
+            <tr>
+                <td>{{this.id}}</td>
+                <td>{{this.name}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

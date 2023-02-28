@@ -8,7 +8,8 @@ const { engine } = require('express-handlebars');
 const exphbs = require('express-handlebars');     
 
 app.engine('.hbs', engine({extname: ".hbs"}));  
-app.set('view engine', '.hbs');                
+app.set('view engine', '.hbs');             
+app.use(express.static(__dirname + '/public'));   
 
 // routes
 // app.get("/", function (req, res) {
@@ -128,7 +129,11 @@ app.get("/crops", function (req, res) {
 });
 
 app.get("/seasons", function (req, res) {
-	res.render('seasons');
+	let listSeasons = "SELECT season_id AS id, name FROM Seasons;";
+
+	db.pool.query(listSeasons, function(error, rows, fields){
+		res.render('seasons', {data: rows});
+	})
 });
 app.get("/sales", function (req, res) {
 	res.render('sales');
