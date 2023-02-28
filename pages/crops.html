@@ -1,193 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crops</title>
-</head>
-<body>
-    <div class="nav">
-        <a href="/">Home |</a>
-        <a href="/seeds"> Seeds |</a>
-        <a href="/crops"> Crops |</a>
-        <a href="/seasons"> Seasons |</a>
-        <a href="/sales"> Sales |</a>
-        <a href="/customers"> Customers |</a>
-        <a href="/crops-seasons"> Crops by Season</a>
-    </div>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Crops</title>
+		<link rel="stylesheet" href="../css/style.css" />
+	</head>
+	<body>
+		<div class="nav">
+			<a href="/">Home |</a>
+			<a href="/seeds"> Seeds |</a>
+			<a href="/crops"> Crops |</a>
+			<a href="/seasons"> Seasons |</a>
+			<a href="/sales"> Sales |</a>
+			<a href="/customers"> Customers |</a>
+			<a href="/crops-seasons"> Crops by Season</a>
+		</div>
 
-    <h1>Manage Crops</h1>
+		<h1>Manage Crops</h1>
 
-    <div id="read">
-        <h2>Current Crops</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Seed Name</th>
-                <th>Quantity</th>
-                <th>Unit Price</th>
-                <th>Year</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>cauliflower</td>
-                <td>cauliflower</td>
-                <td>100</td>
-                <td>175</td>
-                <td>2023</td>
-                <td><a href=#>Edit</a></td>
-                <td><a href=#>Delete</a></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>blueberry</td>
-                <td>blueberry</td>
-                <td>300</td>
-                <td>150</td>
-                <td>2021</td>
-                <td><a href=#>Edit</a></td>
-                <td><a href=#>Delete</a></td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>wheat</td>
-                <td>wheat</td>
-                <td>50</td>
-                <td>25</td>
-                <td>2022</td>
-                <td><a href=#>Edit</a></td>
-                <td><a href=#>Delete</a></td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>wheat</td>
-                <td>wheat</td>
-                <td>100</td>
-                <td>25</td>
-                <td>2022</td>
-                <td><a href=#>Edit</a></td>
-                <td><a href=#>Delete</a></td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>pumpkin</td>
-                <td>pumpkin</td>
-                <td>250</td>
-                <td>320</td>
-                <td>2023</td>
-                <td><a href=#>Edit</a></td>
-                <td><a href=#>Delete</a></td>
-            </tr>
-        </tbody>
-    </table>
-    </div>
-    
-    <div id="create">
-        <h2>Add Crop</h2>
-    <form action="#">
-        <fieldset>
-            <label for="crop-name">Name
-                <input type="text" name="crop-name" required>
-            </label>
-            <br>
-            <label for="seed-name">Seed Name
-                <select name="seed-name" id="seed-name">
-                    <option value="cauliflower">cauliflower</option>
-                    <option value="blueberry">blueberry</option>
-                    <option value="wheat">wheat</option>
-                    <option value="pumpkin">pumpkin</option>
-                </select>
-            </label>
-            <br>
-            <label for="crop-quantity">Quantity
-                <input type="number" name="crop-quantity" required>
-            </label>
-            <br>
-            <label for="crop-unit-price">Unit Price
-                <input type="number" name="crop-unit-price" required>
-            </label>
-            <br>
-            <label for="crop-year">Year
-                <input type="number" name="crop-year" required>
-            </label>
-            <br>
-            <p>Seasons</p>
-            <input type="checkbox" id="spring" name="spring" value="spring">
-            <label for="spring"> spring</label><br>
-            <input type="checkbox" id="summer" name="summer" value="summer">
-            <label for="summer"> summer</label><br>
-            <input type="checkbox" id="fall" name="fall" value="fall">
-            <label for="fall"> fall</label><br> 
-        </fieldset>
-        <button type="submit" value="submit">Add</button>
-    </form>
-    </div>
-    
-    <div id="update">
-        <h2>Update Crop</h2>
-    <form action="#">
-        <fieldset>
-            <label for="crop-name">Name
-                <input type="text" name="crop-name" value="cauliflower" required>
-            </label>
-            <br>
-            <label for="seed-name">Seed Name
-                <select name="seed-name" id="seed-name">
-                    <option value="cauliflower">cauliflower</option>
-                    <option value="blueberry">blueberry</option>
-                    <option value="wheat">wheat</option>
-                    <option value="pumpkin">pumpkin</option>
-                </select>
-            </label>
-            <br>
-            <label for="crop-quantity">Quantity
-                <input type="number" name="crop-quantity" value="200" required>
-            </label>
-            <br>
-            <label for="crop-unit-price">Unit Price
-                <input type="number" name="crop-unit-price" value="150" required>
-            </label>
-            <br>
-            <label for="crop-year">Year
-                <input type="number" name="crop-year" value="2023" required>
-            </label>
-            <br>
-            <p>Seasons</p>
-            <input type="checkbox" id="spring" name="spring" value="spring">
-            <label for="spring"> spring</label><br>
-            <input type="checkbox" id="summer" name="summer" value="summer">
-            <label for="summer"> summer</label><br>
-            <input type="checkbox" id="fall" name="fall" value="fall">
-            <label for="fall"> fall</label><br> 
-        </fieldset>
-        <button type="submit" value="submit">Update</button>
-    </form>
-    </div>
+		<div id="read">
+			<h2>Current Crops</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Name</th>
+						<th>Seed Name</th>
+						<th>Quantity</th>
+						<th>Unit Price</th>
+						<th>Year</th>
+						<th>Edit</th>
+						<th>Delete</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>cauliflower</td>
+						<td>cauliflower</td>
+						<td>100</td>
+						<td>175</td>
+						<td>2023</td>
+						<td><a href="#">Edit</a></td>
+						<td><a href="#">Delete</a></td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>blueberry</td>
+						<td>blueberry</td>
+						<td>300</td>
+						<td>150</td>
+						<td>2021</td>
+						<td><a href="#">Edit</a></td>
+						<td><a href="#">Delete</a></td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>wheat</td>
+						<td>wheat</td>
+						<td>50</td>
+						<td>25</td>
+						<td>2022</td>
+						<td><a href="#">Edit</a></td>
+						<td><a href="#">Delete</a></td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td>wheat</td>
+						<td>wheat</td>
+						<td>100</td>
+						<td>25</td>
+						<td>2022</td>
+						<td><a href="#">Edit</a></td>
+						<td><a href="#">Delete</a></td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td>pumpkin</td>
+						<td>pumpkin</td>
+						<td>250</td>
+						<td>320</td>
+						<td>2023</td>
+						<td><a href="#">Edit</a></td>
+						<td><a href="#">Delete</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 
-    <div id="delete">
-        <h2>Delete Crop</h2>
-        <form action="#">
-            <fieldset>
-                <label for="select-crop">Select crop to delete</label>
-                <select name="select-crop">
-                    <option value="cauliflower">1: cauliflower</option>
-                    <option value="blueberry">2: blueberry</option>
-                    <option value="wheat 1" selected="selected">3: wheat</option>
-                    <option value="wheat 2">4: wheat</option>
-                    <option value="pumpkin">5: pumpkin</option>
-                </select>
-            </fieldset>
-            <button type="submit" value="submit">Delete</button>
-        </form>
-    </div>
+		<div id="create">
+			<h2>Add Crop</h2>
+			<form action="#">
+				<fieldset>
+					<label for="crop-name"
+						>Name
+						<input type="text" name="crop-name" required />
+					</label>
+					<br />
+					<label for="seed-name"
+						>Seed Name
+						<select name="seed-name" id="seed-name">
+							<option value="cauliflower">cauliflower</option>
+							<option value="blueberry">blueberry</option>
+							<option value="wheat">wheat</option>
+							<option value="pumpkin">pumpkin</option>
+						</select>
+					</label>
+					<br />
+					<label for="crop-quantity"
+						>Quantity
+						<input type="number" name="crop-quantity" required />
+					</label>
+					<br />
+					<label for="crop-unit-price"
+						>Unit Price
+						<input type="number" name="crop-unit-price" required />
+					</label>
+					<br />
+					<label for="crop-year"
+						>Year
+						<input type="number" name="crop-year" required />
+					</label>
+					<br />
+					<p>Seasons</p>
+					<input type="checkbox" id="spring" name="spring" value="spring" />
+					<label for="spring"> spring</label><br />
+					<input type="checkbox" id="summer" name="summer" value="summer" />
+					<label for="summer"> summer</label><br />
+					<input type="checkbox" id="fall" name="fall" value="fall" />
+					<label for="fall"> fall</label><br />
+				</fieldset>
+				<button type="submit" value="submit">Add</button>
+			</form>
+		</div>
 
-</body>
+		<div id="update">
+			<h2>Update Crop</h2>
+			<form action="#">
+				<fieldset>
+					<label for="crop-name"
+						>Name
+						<input type="text" name="crop-name" value="cauliflower" required />
+					</label>
+					<br />
+					<label for="seed-name"
+						>Seed Name
+						<select name="seed-name" id="seed-name">
+							<option value="cauliflower">cauliflower</option>
+							<option value="blueberry">blueberry</option>
+							<option value="wheat">wheat</option>
+							<option value="pumpkin">pumpkin</option>
+						</select>
+					</label>
+					<br />
+					<label for="crop-quantity"
+						>Quantity
+						<input type="number" name="crop-quantity" value="200" required />
+					</label>
+					<br />
+					<label for="crop-unit-price"
+						>Unit Price
+						<input type="number" name="crop-unit-price" value="150" required />
+					</label>
+					<br />
+					<label for="crop-year"
+						>Year
+						<input type="number" name="crop-year" value="2023" required />
+					</label>
+					<br />
+					<p>Seasons</p>
+					<input type="checkbox" id="spring" name="spring" value="spring" />
+					<label for="spring"> spring</label><br />
+					<input type="checkbox" id="summer" name="summer" value="summer" />
+					<label for="summer"> summer</label><br />
+					<input type="checkbox" id="fall" name="fall" value="fall" />
+					<label for="fall"> fall</label><br />
+				</fieldset>
+				<button type="submit" value="submit">Update</button>
+			</form>
+		</div>
+
+		<div id="delete">
+			<h2>Delete Crop</h2>
+			<form action="#">
+				<fieldset>
+					<label for="select-crop">Select crop to delete</label>
+					<select name="select-crop">
+						<option value="cauliflower">1: cauliflower</option>
+						<option value="blueberry">2: blueberry</option>
+						<option value="wheat 1" selected="selected">3: wheat</option>
+						<option value="wheat 2">4: wheat</option>
+						<option value="pumpkin">5: pumpkin</option>
+					</select>
+				</fieldset>
+				<button type="submit" value="submit">Delete</button>
+			</form>
+		</div>
+	</body>
 </html>
-
