@@ -122,9 +122,14 @@ app.get("/", function(req, res) {
 	res.render('index');
 });
 
+// Seeds
 app.get("/seeds", function(req, res) {
-	res.render('seeds');
-})
+	let listSeeds = "SELECT Seeds.seed_id AS ID, Seeds.name AS Name, Seeds.price AS Price, Seeds.growth_days AS GrowthDays, Seeds.can_regrow AS CanItRegrow FROM Seeds;"
+
+	db.pool.query(listSeeds, function(error, rows, fields){
+		res.render('seeds', {data: rows});
+	})
+});
 
 app.get("/crops", function (req, res) {
 	res.render('crops');

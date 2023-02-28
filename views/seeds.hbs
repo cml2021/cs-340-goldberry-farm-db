@@ -11,7 +11,29 @@
 <h1>Manage Seeds</h1>
 
 <div id="list-seeds">
-    {{!-- TODO --}}
+    <h2>Current Seeds</h2>
+    <table>
+        <thead>
+            <tr>
+                {{#each data.[0]}}
+                <th>
+                    {{@key}}
+                </th>
+                {{/each}}
+            </tr>
+        </thead>
+        <tbody>
+            {{#each data}}
+            <tr>
+                <td>{{this.ID}}</td>
+                <td>{{this.Name}}</td>
+                <td>{{this.Price}}</td>
+                <td>{{this.GrowthDays}}</td>
+                <td>{{this.CanItRegrow}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
 </div>
 
 <div id="add-seed">
