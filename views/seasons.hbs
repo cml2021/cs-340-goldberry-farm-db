@@ -11,6 +11,7 @@
 <h1>Manage Seasons</h1>
 
 <div id="list-seasons">
+    <h2>Current Seasons</h2>
     <table>
         <thead>
             <tr>
@@ -30,4 +31,19 @@
             {{/each}}
         </tbody>
     </table>
+</div>
+
+<div id="add-season">
+	<h2>Add Season</h2>
+	<form method="POST" action="/add-season">
+		<fieldset>
+            <label for="season=id">ID
+                <input type="text" name="season-id" id="season-id" minlength="1" maxlength="2" required />
+            </label>
+			<label for="season-name">Name
+				<input type="text" name="season-name" id="season-name" minlength="1" maxlength="20" required />
+		    </label>
+		</fieldset>
+		<input type="submit">
+	</form>
 </div>

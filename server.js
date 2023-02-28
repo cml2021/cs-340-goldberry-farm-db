@@ -9,7 +9,9 @@ const exphbs = require('express-handlebars');
 
 app.engine('.hbs', engine({extname: ".hbs"}));  
 app.set('view engine', '.hbs');             
-app.use(express.static(__dirname + '/public'));   
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));  
+app.use(express.static('/public')); 
 
 // routes
 // app.get("/", function (req, res) {
@@ -128,6 +130,8 @@ app.get("/crops", function (req, res) {
 	res.render('crops');
 });
 
+// Seasons
+
 app.get("/seasons", function (req, res) {
 	let listSeasons = "SELECT season_id AS id, name FROM Seasons;";
 
@@ -135,6 +139,23 @@ app.get("/seasons", function (req, res) {
 		res.render('seasons', {data: rows});
 	})
 });
+
+app.post("/add-season", function(req, res) {
+	let data = req.body;
+
+	addSeason = `INSERT INTO Seasons (season_id, name) VALUES ('${data['season-id']}', '${data['season-name']}');`;
+
+	db.pool.query(addSeason, function(error, rows, fields) {
+		if (error) {
+			console.log(error);
+			res.sendStatus(400);
+		} else {
+			res.redirect("/seasons");
+		}
+	})
+})
+
+
 app.get("/sales", function (req, res) {
 	res.render('sales');
 });
