@@ -6,34 +6,38 @@
 -- SEEDS 
 ------------------------------------------------------------------------------------
 
--- read
--- Colon ':' used to denote the variables that will have data from Node
-SELECT Seeds.seed_id, Seeds.name, Seeds.price, Seeds.growth_days, Seeds.can_regrow
+-- Query for select all seeds
+SELECT Seeds.seed_id AS ID, Seeds.name AS Name, Seeds.price AS Price, Seeds.growth_days AS GrowthDays, Seeds.can_regrow AS CanItRegrow 
 FROM Seeds;
 
--- create
+-- Query to create a seed
 -- Colon ':' used to denote the variables that will have data from Node
 INSERT INTO Seeds (name, price, growth_days, can_regrow)
 VALUES (:seed_name_input, :seed_price_input, :seed_growth_days_input, seed_can_regrow_input);
 
--- delete
--- Colon ':' used to denote the variables that will have data from Node
-DELETE FROM Seeds WHERE Seeds.name = :seed_name_input;
+-- If a related crop is selected during seed creation, the following query updates the crop <> seed relationship
+UPDATE Crops 
+SET Crops.seed_id = :inserted_seed_id 
+WHERE Crops.crop_id = :related_crop_id;
 
--- update
+-- Query to update a seed
 -- Colon ':' used to denote the variables that will have data from Node
 UPDATE Seeds
 SET Seeds.name = :seed_name_input, Seeds.price = :seed_price_input, Seeds.growth_days = :seed_growth_days_input, 
     Seeds.can_regrow = :seed_can_regrow_input
 WHERE Seeds.seed_id = :seed_id_input;
 
+-- Query to delete a seed
+-- Colon ':' used to denote the variables that will have data from Node
+DELETE FROM Seeds WHERE Seeds.name = :seed_name_input;
+
 ------------------------------------------------------------------------------------
 -- CROPS 
 ------------------------------------------------------------------------------------
 
--- read
+-- Query to list crops
 -- Colon ':' used to denote the variables that will have data from Node
-SELECT Crops.crop_id, Crops.name, Seeds.name AS seed_name, Crops.quantity, Crops.unit_price, Crops.year
+SELECT Crops.crop_id AS ID, Crops.name AS Name, Seeds.name AS SeedName, Crops.quantity as QUANTITY, Crops.unit_price AS UnitPrice, Crops.year AS Year
 FROM Crops
 INNER JOIN Seeds ON Crops.seed_id = Seeds.seed_id;
 
