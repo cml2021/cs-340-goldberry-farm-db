@@ -1,1 +1,60 @@
-<h1>Crops go here</h1>
+<h1>Manage Crops</h1>
+
+<div id="list-crops">
+    <h2>Current Crops</h2>
+    <table id="crop-list-table">
+        <thead>
+            <tr>
+                {{#each data.[0]}}
+                <th>
+                    {{@key}}
+                </th>
+                {{/each}}
+            </tr>
+        </thead>
+        <tbody>
+            {{#each data}}
+            <tr>
+                <td>{{this.ID}}</td>
+                <td>{{this.Name}}</td>
+                <td>{{this.Quantity}}</td>
+                <td>{{this.UnitPrice}}</td>
+                <td>{{this.Year}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+
+<div id="add-crop">
+    <h2>Add Crop</h2>
+    <form id="add-crop-form" method="POST" action="/add-crop">
+        <fieldset>
+            <label for="crop-name">Name
+                <input type="text" name="crop-name" id="add-crop-name" minlength="1" maxlength="30" required>
+            </label>
+            <br>
+            <label for="crop-quantity">Quantity
+                <input type="number" name="crop-quantity" id="add-crop-quantity" min="0" max="9999" required>
+            </label>
+            <br>
+            <label for="crop-unit-price">Unit Price
+                <input type="number" name="crop-unit-price" id="add-crop-unit-price" min="0" max="9999" required>
+            </label>
+            <br>
+            <label for="crop-year">Year
+                <input type="number" name="crop-year" id="add-crop-year" min="0" max="9999" required>
+            </label>
+            <br>
+            <label for="related-seed">Related Seed
+                <select name="related-seed" id="related-seed" required>
+                    <option value="">Select a Seed</option>
+                    {{#each seeds}}
+                    <option value="{{this.seed_id}}">{{this.name}}</option>
+                    {{/each}}
+                </select>
+            </label>
+        </fieldset>
+        <input type="submit" />
+    </form>
+</div>

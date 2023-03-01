@@ -122,7 +122,8 @@ app.get("/", function(req, res) {
 	res.render('index');
 });
 
-// Seeds
+// SEEDS
+
 app.get("/seeds", function(req, res) {
 	let listSeeds = "SELECT Seeds.seed_id AS ID, Seeds.name AS Name, Seeds.price AS Price, Seeds.growth_days AS GrowthDays, Seeds.can_regrow AS CanItRegrow FROM Seeds;";
 	let getCropName = "SELECT * FROM Crops;";
@@ -191,8 +192,37 @@ app.delete("/delete-seed", function(req, res) {
 	})
 });
 
+// CROPS
+
 app.get("/crops", function (req, res) {
-	res.render('crops');
+	let listCrops = "SELECT Crops.crop_id AS ID, Crops.name AS Name, Crops.quantity AS Quantity, Crops.unit_price AS UnitPrice, Crops.year AS Year FROM Crops;"
+	let listSeeds = "SELECT Seeds.seed_id, Seeds.name FROM Seeds;"
+	
+	db.pool.query(listCrops, function(error, rows, fields) {
+		let crops = rows;
+
+		db.pool.query(listSeeds, (error, rows, fields) => {
+			let seeds = rows;
+			return res.render('crops', {data: crops, seeds: seeds});
+		});
+	})
+});
+
+app.post("/add-crop", function(req, res) {
+	let data = req.body;
+	console.log(data);
+
+	let addCrop = `INSERT INTO Crops (name, quantity, unit_price, year, seed_id) VALUES ('${data['crop-name']}', '${data['crop-quantity']}', '${data['crop-unit-price']}', '${data['crop-year']}', '${data['related-seed']}');`;
+
+	db.pool.query(addCrop, function(error, rows, fields){
+		if (error) {
+			console.log(error);
+			res.sendStatus(400);
+		}
+		else {
+			res.redirect('/crops');
+		};
+	});
 });
 
 // Seasons
