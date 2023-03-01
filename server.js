@@ -152,7 +152,7 @@ app.post("/add-seed-form", function(req, res){
 	})
 });
 
-app.put("/update-seed", function(req, res) {
+app.patch("/update-seed", function(req, res) {
 	const data = req.body;
 
 	const seedId = parseInt(data.seedId);
@@ -169,7 +169,8 @@ app.put("/update-seed", function(req, res) {
 			console.log(error);
 			res.sendStatus(400);
 		} else {
-			console.log(`${name} updated`)
+			res.body = JSON.stringify(data);
+			res.sendStatus(200);
 		}
 	})
 })
@@ -185,10 +186,10 @@ app.delete("/delete-seed", function(req, res) {
 			console.log(error);
 			res.sendStatus(400);
 		} else {
-			res.send('seed deleted');
+			res.sendStatus(204);
 		}
 	})
-})
+});
 
 app.get("/crops", function (req, res) {
 	res.render('crops');

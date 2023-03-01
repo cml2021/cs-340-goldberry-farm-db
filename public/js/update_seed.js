@@ -27,12 +27,21 @@ updateSeedForm.addEventListener("submit", function (e) {
         relatedCropId: seedRelatedCropIdValue
     }
 
-    // console.log("request data in update_seed: ", data)
+    const updateSeed = async () => {
+        const response = await fetch("/update-seed", {
+            "method": "PATCH",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(data)
+        });
+        
+        if (response.status == 200) {
+            window.location.reload();
+        } else {
+            console.log(response.status);
+        };
+    };
 
-    const xhttp = new XMLHttpRequest();
-    xhttp.open("PUT", "/update-seed", true);
-    xhttp.setRequestHeader("Content-type", "application/json");
-    xhttp.send(JSON.stringify(data));
-
-   //TODO figure out how to reload page. CORS?
+    updateSeed();
 });
