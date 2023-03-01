@@ -19,14 +19,12 @@ deleteSeedForm.addEventListener("submit", function(e) {
             },
             body: JSON.stringify(seedData)
         });
-        const data = await response.json();
+        if (response.status == 200) {
+            window.location.reload();
+        } else {
+            console.log(response.status);
+        }
     };
 
     deleteSeed();
-    // const xhttp = new XMLHttpRequest();
-    // xhttp.open("DELETE", "/delete-seed", true);
-    // xhttp.setRequestHeader("Content-type", "application/json");
-    // xhttp.send(JSON.stringify(data));
-
-    // figure out how to get page to reload
-})
+});
