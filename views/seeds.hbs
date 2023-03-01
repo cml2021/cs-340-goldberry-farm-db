@@ -2,7 +2,7 @@
 
 <div id="list-seeds">
     <h2>Current Seeds</h2>
-    <table>
+    <table id="seed-list-table">
         <thead>
             <tr>
                 {{#each data.[0]}}
@@ -59,9 +59,51 @@
 </div>
 
 <div id="update-seed">
-    {{!-- TODO --}}
+    <h2>Update Seed</h2>
+    <form id="update-seed-form">
+        <fieldset>
+            <label for="selected-seed">Select a seed to update
+                <select name="selected-seed" id="seed-to-update">
+                    {{#each data}}
+                    <option value="{{this.ID}}">{{this.ID}}: {{this.Name}}</option>
+                    {{/each}}
+                </select>
+            </label>
+            <br>
+            <label for="seed-name">Name
+                <input type="text" name="seed-name" id="updated-seed-name" required>
+            </label>
+            <br>
+            <label for="seed-price">Price
+                <input type="number" name="seed-price" id="updated-seed-price" min="0" max="9999" required>
+            </label>
+            <br>
+            <label for="seed-growth-days">Days to Grow
+                <input type="number" name="seed-growth-days" id="updated-seed-growth-days" min="0" max="100" required>
+            </label>
+            <br>
+            <label for="seed-can-regrow">Can it Regrow?
+                <select name="seed-can-regrow" id="updated-seed-can-regrow" required>
+                    <option value="1">Yes</option>
+                    <option selected="selected" value="0">No</option>
+                </select>
+            </label>
+            <br>
+            <label for="related-crop">Related Crop
+                <select name="related-crop" id="updated-related-crop">
+                    <option value="none">None</option>
+                    {{#each crops}}
+                    <option value="{{this.crop_id}}">{{this.name}}</option>
+                    {{/each}}
+                </select>
+            </label>
+        </fieldset>
+        <input type="submit">
+    </form>
 </div>
 
 <div id="delete-seed">
     {{!-- TODO --}}
 </div>
+
+<script src="./js/update_seed.js"></script>

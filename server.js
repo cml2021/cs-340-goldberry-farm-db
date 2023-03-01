@@ -152,6 +152,30 @@ app.post("/add-seed-form", function(req, res){
 	})
 });
 
+app.put("/update-seed", function(req, res, next) {
+	const data = req.body;
+
+	const seedId = parseInt(data.seedId);
+	const name = data.name;
+	const price = parseInt(data.price);
+	const growthDays = parseInt(data.growthDays);
+	const canRegrow = parseInt(data.canRegrow);
+	const relatedCropId = parseInt(data.relatedCropId);
+
+	// console.log("parsed data", seedId, name, price, growthDays, canRegrow)
+	
+	updateSeed = `UPDATE Seeds SET name = ?, price = ?, growth_days = ?, can_regrow = ? WHERE seed_id = ?;`
+
+	db.pool.query(updateSeed, [name, price, growthDays, canRegrow, seedId], function(error, rows, fields) {
+		if (error) {
+			console.log(error);
+			res.sendStatus(400);
+		} else {
+			console.log(`${name} updated`)
+		}
+	})
+})
+
 app.get("/crops", function (req, res) {
 	res.render('crops');
 });
