@@ -103,7 +103,19 @@
 </div>
 
 <div id="delete-seed">
-    {{!-- TODO --}}
+    <h2>Delete Seed</h2>
+    <form id="delete-seed-form">
+        <fieldset>
+            <label for="selected-seed">Select a seed to delete
+                <select name="selected-seed" id="seed-to-delete">
+                    {{#each data}}
+                    <option value="{{this.ID}}">{{this.ID}}: {{this.Name}}</option>
+                    {{/each}}
+                </select>
+            </label>
+        <input type="submit">
+    </form>
 </div>
 
 <script src="./js/update_seed.js"></script>
+<script src="./js/delete_seed.js"></script>

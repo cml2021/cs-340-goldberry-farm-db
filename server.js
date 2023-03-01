@@ -152,7 +152,7 @@ app.post("/add-seed-form", function(req, res){
 	})
 });
 
-app.put("/update-seed", function(req, res, next) {
+app.put("/update-seed", function(req, res) {
 	const data = req.body;
 
 	const seedId = parseInt(data.seedId);
@@ -161,8 +161,6 @@ app.put("/update-seed", function(req, res, next) {
 	const growthDays = parseInt(data.growthDays);
 	const canRegrow = parseInt(data.canRegrow);
 	const relatedCropId = parseInt(data.relatedCropId);
-
-	// console.log("parsed data", seedId, name, price, growthDays, canRegrow)
 	
 	updateSeed = `UPDATE Seeds SET name = ?, price = ?, growth_days = ?, can_regrow = ? WHERE seed_id = ?;`
 
@@ -172,6 +170,22 @@ app.put("/update-seed", function(req, res, next) {
 			res.sendStatus(400);
 		} else {
 			console.log(`${name} updated`)
+		}
+	})
+})
+
+app.delete("/delete-seed", function(req, res) {
+	const data = req.body
+	const seedId = parseInt(data.seedId);
+
+	deleteSeed = `DELETE FROM Seeds WHERE seed_id = ?;`
+
+	db.pool.query(deleteSeed, [seedId], function(error, rows, fields) {
+		if (error) {
+			console.log(error);
+			res.sendStatus(400);
+		} else {
+			res.send('seed deleted');
 		}
 	})
 })

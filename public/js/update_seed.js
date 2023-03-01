@@ -27,12 +27,12 @@ updateSeedForm.addEventListener("submit", function (e) {
         relatedCropId: seedRelatedCropIdValue
     }
 
-    console.log("request data in update_seed: ", data)
+    // console.log("request data in update_seed: ", data)
 
     const xhttp = new XMLHttpRequest();
     xhttp.open("PUT", "/update-seed", true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(JSON.stringify(data));
 
-    console.log(xhttp.response)
+   //TODO figure out how to reload page. CORS?
 });
