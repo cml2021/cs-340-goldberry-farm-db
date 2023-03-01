@@ -46,7 +46,7 @@
             </label>
             <label for="related-crop">Related Crop
                 <select name="related-crop" id="related-crop">
-                    <option value="">Select a Crop</option>
+                    <option value="-999">Select a Crop</option>
                     {{#each crops}}
                     <option value="{{this.crop_id}}">{{this.name}}</option>
                     {{/each}}

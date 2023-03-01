@@ -140,15 +140,30 @@ app.get("/seeds", function(req, res) {
 app.post("/add-seed-form", function(req, res){
 	let data = req.body;
 
+	const relatedCropId = parseInt(data["related-crop"]);
+
 	addSeed = `INSERT INTO Seeds (name, price, growth_days, can_regrow) VALUES ('${data['seed-name']}', '${data['seed-price']}', '${data['growth-days']}', '${data['can-regrow']}')`;
+	updateRelatedCrop =  `UPDATE Crops SET Crops.seed_id = ? WHERE Crops.crop_id = ?;`
 
 	db.pool.query(addSeed, function(error, rows, fields){
 		if (error) {
-			console.log(error)
+			console.log(error);
 			res.sendStatus(400);
 		}
 		else {
-			res.redirect('/seeds')
+			insertedSeedId = rows.insertId;
+
+			// if a related crop is selected during CREATE, update the related crop's FK seed_id
+			if (relatedCropId != -999) {
+
+				db.pool.query(updateRelatedCrop, [insertedSeedId, relatedCropId], function(error, rows, fields) {
+					if (error) {
+						console.log(error);
+						res.sendStatus(400);
+					}
+				})
+			}
+			res.redirect('/seeds');
 		}
 	})
 });
