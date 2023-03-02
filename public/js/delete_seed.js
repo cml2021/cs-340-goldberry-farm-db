@@ -19,7 +19,7 @@ deleteSeedForm.addEventListener("submit", function(e) {
             },
             body: JSON.stringify(seedData)
         });
-        if (response.status == 200) {
+        if (response.status == 204) {
             window.location.reload();
         } else {
             console.log(response.status);
