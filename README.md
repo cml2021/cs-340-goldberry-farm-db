@@ -21,3 +21,7 @@ $ npm start
 ```
 
 View the app on your local server `localhost:5600` or on flip `http://flip1.engr.oregonstate.edu:5600/`
+
+## Sources
+
+Kochera, G., et al (2022) NodeJS Starter App [Source code]. https://github.com/osu-cs340-ecampus/nodejs-starter-app
