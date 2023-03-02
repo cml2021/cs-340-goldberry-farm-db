@@ -319,7 +319,14 @@ app.post("/add-season", function(req, res) {
 });
 
 app.get("/sales", function (req, res) {
-	res.render('sales');
+	let listSales = `SELECT Sales.sale_id AS ID, Customers.name AS Customer, Crops.name AS Crop, Sales.quantity AS Quantity, Sales.price AS Price, Sales.date AS Date, Sales.is_shipped AS ShippingStatus
+					FROM Sales
+					INNER JOIN Customers ON Sales.customer_id = Customers.customer_id
+					INNER JOIN Crops ON Sales.crop_id = Crops.crop_id;`;
+
+	db.pool.query(listSales, function(error, rows, fields){
+		res.render('sales', {data: rows});
+	})
 });
 
 app.get("/customers", function (req, res) {
