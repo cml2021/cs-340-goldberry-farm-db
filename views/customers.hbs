@@ -1,1 +1,29 @@
-<h1>Customers go here</h1>
+<h1>Manage Customers</h1>
+
+<div id="list-customers">
+    <h2>Customers</h2>
+    <table id="customer-list-table">
+        <thead>
+            <tr>
+                {{#each data.[0]}}
+                <th>
+                    {{@key}}
+                </th>
+                {{/each}}
+            </tr>
+        </thead>
+        <tbody>
+            {{#each data}}
+            <tr>
+                <td>{{this.ID}}</td>
+                <td>{{this.Name}}</td>
+                <td>{{this.Address}}</td>
+                <td>{{this.City}}</td>
+                <td>{{this.State}}</td>
+                <td>{{this.Zipcode}}</td>
+                <td>{{this.Email}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

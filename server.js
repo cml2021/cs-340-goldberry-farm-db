@@ -223,9 +223,21 @@ app.get("/sales", function (req, res) {
 	})
 });
 
+// CUSTOMERS
+
 app.get("/customers", function (req, res) {
-	res.render('customers');
+	let listCustomers = `SELECT customer_id AS ID, name AS Name, address AS Address, city AS City, state AS State, zipcode AS Zipcode, email AS Email FROM Customers;`
+
+	db.pool.query(listCustomers, function(error, rows, fields) {
+		if (error) {
+			handleError(error);
+		} else {
+			res.render('customers', {data: rows});
+		}
+	})
 });
+
+// CROPS_SEASONS
 
 app.get("/crops-seasons", function (req, res) {
 	res.render('crops-seasons');
