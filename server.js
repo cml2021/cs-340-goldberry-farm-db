@@ -1,4 +1,3 @@
-// setup
 const express = require("express");
 const path = require("path");
 const app = express();
@@ -13,7 +12,6 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));  
 app.use(express.static('public')); 
 
-// routes
 
 app.get("/", function(req, res) {
 	res.render('index');
@@ -189,7 +187,7 @@ app.post("/add-crop", function(req, res) {
 	});
 });
 
-// Seasons
+// SEASONS
 
 app.get("/seasons", function (req, res) {
 	let listSeasons = "SELECT season_id AS id, name FROM Seasons;";
@@ -213,11 +211,12 @@ app.post("/add-season", function(req, res) {
 	})
 });
 
+// SALES
+
 app.get("/sales", function (req, res) {
-	let listSales = `SELECT Sales.sale_id AS ID, Customers.name AS Customer, Crops.name AS Crop, Sales.quantity AS Quantity, Sales.price AS Price, Sales.date AS Date, Sales.is_shipped AS ShippingStatus
-					FROM Sales
+	let listSales = `SELECT Sales.sale_id AS ID, Customers.name AS Customer, Crops.name AS Crop, Sales.quantity AS Quantity, Sales.price AS Price, Sales.date AS Date, Sales.is_shipped AS ShippingStatus FROM Sales
 					INNER JOIN Customers ON Sales.customer_id = Customers.customer_id
-					INNER JOIN Crops ON Sales.crop_id = Crops.crop_id;`;
+					LEFT JOIN Crops ON Sales.crop_id = Crops.crop_id;`;
 
 	db.pool.query(listSales, function(error, rows, fields){
 		res.render('sales', {data: rows});
