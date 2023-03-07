@@ -27,3 +27,35 @@
         </tbody>
     </table>
 </div>
+
+<div id="add-customer">
+    <h2>Add Customer</h2>
+    <form id="add-customer-form" method="POST" action="/add-customer">
+        <fieldset>
+            <label for="customer-name">Name
+                <input type="text" name="customer-name" id="add-customer-name" maxlength="100" required>
+            </label>
+            <br>
+            <label for="customer-address">Address
+                <input type="text" name="customer-address" id="add-customer-address" maxlength="100" required>
+            </label>
+            <br>
+            <label for="customer-city">City
+                <input type="text" name="customer-city" id="add-customer-city" maxlength="100" required>
+            </label>
+            <br>
+            <label for="customer-state">State
+                <input type="text" name="customer-state" id="add-customer-state" maxlength="25" required>
+            </label>
+            <br>
+            <label for="customer-zip">ZIP Code
+                <input type="number" name="customer-zip" id="add-customer-zip" minlength="5" maxlength="5" required>
+            </label>
+            <br>
+            <label for="customer-email">Email
+                <input type="email" name="customer-email" id="add-customer-email" maxlength="100">
+            </label>
+        </fieldset>
+        <input type="submit">
+    </form>
+</div>

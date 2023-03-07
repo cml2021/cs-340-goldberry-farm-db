@@ -237,6 +237,24 @@ app.get("/customers", function (req, res) {
 	})
 });
 
+app.post("/add-customer", function(req, res) {
+	let data = req.body;
+
+	if (data.email == undefined) {
+		data.email = 'NULL';
+	}
+
+	let addCustomer = `INSERT INTO Customers (name, address, city, state, zipcode, email) VALUES ("${data['customer-name']}", "${data['customer-address']}", "${data['customer-city']}", "${data['customer-state']}", '${data['customer-zip']}', "${data['customer-email']}");`;
+
+	db.pool.query(addCustomer, function(error, rows, fields) {
+		if (error) {
+			handleError(error);
+		} else {
+			res.redirect('/customers');
+		}
+	})
+});
+
 // CROPS_SEASONS
 
 app.get("/crops-seasons", function (req, res) {
