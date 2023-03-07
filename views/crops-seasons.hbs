@@ -1,1 +1,24 @@
-<h1>Crops_Seasons go here</h1>
+<h1>Manage Crops by Season</h1>
+
+<div id="list-crops-seasons">
+    <h2>Crops by Season</h2>
+    <table id="crops-seasons-list-table">
+        <thead>
+            <tr>
+                {{#each data.[0]}}
+                <th>
+                    {{@key}}
+                </th>
+                {{/each}}
+            </tr>
+        </thead>
+        <tbody>
+            {{#each data}}
+            <tr>
+                <td>{{this.Crop}}</td>
+                <td>{{this.Season}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

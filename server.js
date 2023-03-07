@@ -219,14 +219,18 @@ app.get("/sales", function (req, res) {
 					LEFT JOIN Crops ON Sales.crop_id = Crops.crop_id;`;
 
 	db.pool.query(listSales, function(error, rows, fields){
-		res.render('sales', {data: rows});
+		if (error) {
+			handleError(error);
+		} else {
+			res.render('sales', {data: rows});
+		}
 	})
 });
 
 // CUSTOMERS
 
 app.get("/customers", function (req, res) {
-	let listCustomers = `SELECT customer_id AS ID, name AS Name, address AS Address, city AS City, state AS State, zipcode AS Zipcode, email AS Email FROM Customers;`
+	let listCustomers = 'SELECT customer_id AS ID, name AS Name, address AS Address, city AS City, state AS State, zipcode AS Zipcode, email AS Email FROM Customers;'
 
 	db.pool.query(listCustomers, function(error, rows, fields) {
 		if (error) {
@@ -258,7 +262,15 @@ app.post("/add-customer", function(req, res) {
 // CROPS_SEASONS
 
 app.get("/crops-seasons", function (req, res) {
-	res.render('crops-seasons');
+	let listCropsSeasons = 'SELECT Crops.name AS Crop, Seasons.name AS Season FROM Crops_Seasons INNER JOIN Crops ON Crops.crop_id = Crops_Seasons.crop_id INNER JOIN Seasons on Seasons.season_id = Crops_Seasons.season_id;'
+
+	db.pool.query(listCropsSeasons, function(error, rows, fields) {
+		if (error) {
+			handleError(error);
+		} else {
+			res.render('crops-seasons', {data: rows});
+		}
+	})
 });
 
 // error handler
