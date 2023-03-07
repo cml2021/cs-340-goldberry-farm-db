@@ -11,107 +11,98 @@ SELECT Seeds.seed_id AS ID, Seeds.name AS Name, Seeds.price AS Price, Seeds.grow
 FROM Seeds;
 
 -- Query to create a seed
--- Colon ':' used to denote the variables that will have data from Node
+-- Angle brackets '<' '>' used to denote the variables that will have data from Node
 INSERT INTO Seeds (name, price, growth_days, can_regrow)
-VALUES (:seed_name_input, :seed_price_input, :seed_growth_days_input, seed_can_regrow_input);
+VALUES (<seed-name>, <seed-price>, <growth-days>, <can-regrow>);
 
 -- If a related crop is selected during seed creation, the following query updates the crop <> seed relationship
+-- Angle brackets '<' '>' used to denote the variables that will have data from Node
 UPDATE Crops 
-SET Crops.seed_id = :inserted_seed_id 
-WHERE Crops.crop_id = :related_crop_id;
+SET Crops.seed_id = <insertedSeedId>
+WHERE Crops.crop_id = <relatedCropId>;
 
 -- Query to update a seed
--- Colon ':' used to denote the variables that will have data from Node
+-- Angle brackets '<' '>' used to denote the variables that will have data from Node
 UPDATE Seeds
-SET Seeds.name = :seed_name_input, Seeds.price = :seed_price_input, Seeds.growth_days = :seed_growth_days_input, 
-    Seeds.can_regrow = :seed_can_regrow_input
-WHERE Seeds.seed_id = :seed_id_input;
+SET Seeds.name = <name>, Seeds.price = <price>, Seeds.growth_days = <growthDays>, Seeds.can_regrow = <canRegrow>
+WHERE Seeds.seed_id = <seedId>;
+
+-- If a related crop needs to be removed during Seed UPDATE, the following query updates the crop <> seed relationship
+-- Angle brackets '<' '>' used to denote the variables that will have data from Node
+DELETE FROM Crops 
+WHERE Crops.crop_id = <currentRelatedCropId>;
+
+-- If a related crop needs to be added during Seed UPDATE, the following query updates the crop <> seed relationship
+-- Angle brackets '<' '>' used to denote the variables that will have data from Node
+UPDATE Crops
+SET Crops.seed_id = <seedId> 
+WHERE Crops.crop_id = <relatedCropId>;
 
 -- Query to delete a seed
--- Colon ':' used to denote the variables that will have data from Node
-DELETE FROM Seeds WHERE Seeds.name = :seed_name_input;
+-- Angle brackets '<' '>' used to denote the variables that will have data from Node
+DELETE FROM Seeds 
+WHERE Seeds.seed_id = <seedId>;
 
 ------------------------------------------------------------------------------------
 -- CROPS 
 ------------------------------------------------------------------------------------
 
 -- Query to list crops
--- Colon ':' used to denote the variables that will have data from Node
+-- Angle brackets '<' '>' used to denote the variables that will have data from Node
 SELECT Crops.crop_id AS ID, Crops.name AS Name, Seeds.name AS SeedName, Crops.quantity as QUANTITY, Crops.unit_price AS UnitPrice, Crops.year AS Year
 FROM Crops
 INNER JOIN Seeds ON Crops.seed_id = Seeds.seed_id;
 
--- create
--- Colon ':' used to denote the variables that will have data from Node
-INSERT INTO Crops (Crops.name, seed_name, Crops.quantity, Crops.unit_price, Crops.year)
-VALUES (:crop_name_input, :seed_name_input, :crop_quantity_input, :crop_unit_price_input, :crop_year_input);
+-- Query to add a new crop
+-- Angle brackets '<' '>' used to denote the variables that will have data from Node
+INSERT INTO Crops (Crops.name, Crops.quantity, Crops.unit_price, Crops.year, Crops.seed_id)
+VALUES (<name>, <quantity>, <unit_price>, <year>, <seed_id>);
 
--- delete
--- Colon ':' used to denote the variables that will have data from Node
-DELETE FROM Crops WHERE Crops.name = :crop_name_input;
-
--- update
--- Colon ':' used to denote the variables that will have data from Node
+-- Query to update a crop
+-- Angle brackets '<' '>' used to denote the variables that will have data from Node
 UPDATE Crops
-SET Crops.name = :crop_name_input, seed_name = :seed_name_input, Crops.quantity = :crop_quantity_input
-	Crops.unit_price = :crop_unit_price_input, Crops.year = :crop_year_input
-WHERE Crops.crop_id = :crop_id_input;
+SET Crops.name = <name>, Crops.quantity = <quantity>, Crops.unit_price = <unit_price>, Crops.year = <year>, Crops.seed_id = <seedId>
+WHERE Crops.crop_id = <cropId>;
+
+-- Query to delete a crop
+-- Angle brackets '<' '>' used to denote the variables that will have data from Node
+DELETE FROM Crops 
+WHERE Crops.id = <cropId>;
 
 ------------------------------------------------------------------------------------
 -- SEASONS
 ------------------------------------------------------------------------------------
 
 -- Query for select all seasons
-SELECT 
-    * 
-FROM 
-    Seasons;
+SELECT season_id AS id, name 
+FROM Seasons;
 
 -- Query for add a new season
 -- Angle brackets '<' '>' used to denote the variables that will have data from Node
-INSERT INTO 
-    Seasons (season_id, name)
-VALUES 
-    (<season_id>, <season_name>);
-
--- Query for update a season
--- Angle brackets '<' '>' used to denote the variables that will have data from Node
-UPDATE 
-    Seasons
-SET
-    name = <season_name>
-WHERE
-    season_id = <season_id>;
-
--- Query for delete a season
--- Angle brackets '<' '>' used to denote the variables that will have data from Node
-DELETE
-FROM 
-    Seasons
-WHERE
-    season_id = <season_id>;
+INSERT INTO Seasons (season_id, name)
+VALUES (<season-id>, <season-name>);
 
 ------------------------------------------------------------------------------------
 -- SALES
 ------------------------------------------------------------------------------------
 
-- read
--- Colon ':' used to denote the variables that will have data from Node
-SELECT Sales.sale_id, Customers.name AS customer, Crops.name AS crop, Sales.quantity, Sales.price, Sales.date, Sales.is_shipped AS shipping_status
+-- Query for list sales
+-- Angle brackets '<' '>' used to denote the variables that will have data from Node
+SELECT Sales.sale_id AS ID, Customers.name AS Customer, Crops.name AS Crop, Sales.quantity AS Quantity, Sales.price AS Price, Sales.date AS Date, Sales.is_shipped AS ShippingStatus
 FROM Sales
 INNER JOIN Customers ON Sales.customer_id = Customers.customer_id
-INNER JOIN Crops ON Sales.crop_id = Crops.crop_id;
+LEFT JOIN Crops ON Sales.crop_id = Crops.crop_id;
 
--- create
--- Colon ':' used to denote the variables that will have data from Node
+-- Query for create a new sale (TODO: update this when implemented)
+-- Angle brackets '<' '>' used to denote the variables that will have data from Node
 INSERT INTO Sales (Sales.sale_id, customer, crop, Sales.quantity, Sales.price, Sales.date, shipping_status)
-VALUES (:customer_name_input, :crop_name_input, :sale_quantity_input, :sale_price_input, :sale_date_input, :sale_is_shipped_input);
+VALUES (<customer_name>, <crop_name>, <sale_quantity>, <sale_price>, <sale_date>, <sale_is_shipped>);
 
--- delete
+-- delete (TODO: update this when implemented or delete if not implemented)
 -- Colon ':' used to denote the variables that will have data from Node
 DELETE FROM Sales WHERE Sales.sale_id = :sale_id_input;
 
--- update
+-- update (TODO: update this when implemented or delete if not implemented)
 -- Colon ':' used to denote the variables that will have data from Node
 UPDATE Sales
 SET customer = :customer_name_input, crop = :crop_name_input, Sales.quantity = :sale_quantity_input,
@@ -123,72 +114,20 @@ WHERE Sales.sale_id = :sale_id_input;
 ------------------------------------------------------------------------------------
 
 -- Query for select all customers
-SELECT 
-    name, address, city, state, zipcode, email
-FROM
-    Customers;
+SELECT customer_id AS ID, name AS Name, address AS Address, city AS City, state AS State, zipcode AS Zipcode, email AS Email 
+FROM Customers;
 
 -- Query for add a new customer
 -- Angle brackets '<' '>' used to denote the variables that will have data from Node
-INSERT INTO 
-    Customers (name, address, city, state, zipcode, email)
-VALUES
-    (<customer_name>, <customer_address>, <customer_city>, <customer_state>, <customer_zip>, <customer_email>);
-
--- Query for update a customer
--- Angle brackets '<' '>' used to denote the variables that will have data from Node
-UPDATE 
-    Customers
-SET
-    name = <customer_name>,
-    address = <customer_address>,
-    city = <customer_city>,
-    state = <customer_state>,
-    zipcode = <customer_zip>,
-    email = <customer_email>
-
-WHERE
-    customer_id = <customer_id>;
-
--- Query for delete a customer
--- Angle brackets '<' '>' used to denote the variables that will have data from Node
-DELETE
-FROM 
-    Customers
-WHERE
-    customer_id = <customer_id>;
+INSERT INTO Customers (name, address, city, state, zipcode, email)
+VALUES (<customer-name>, <customer-address>, <customer-city>, <customer-state>, <customer-zip>, <customer-email>);
 
 ------------------------------------------------------------------------------------
 -- CROPS_SEASONS
 ------------------------------------------------------------------------------------
 
 -- Query for select all crops_seasons
-SELECT 
-    crop_id, season_id
-FROM
-    Crops_Seasons;
-
--- Query for add a new crop_season
--- Angle brackets '<' '>' used to denote the variables that will have data from Node
-INSERT INTO 
-    Crops_Seasons
-VALUES
-    (<crop_id>, <season_id>);
-
--- Query for update a crop_season
--- Angle brackets '<' '>' used to denote the variables that will have data from Node
-UPDATE
-    Crops_Seasons
-SET
-    crop_id = <crop_id>,
-    season_id = <season_id>
-WHERE
-    crop_season_id = <crop_season_id>;
-
--- Query for delete a crop_season
--- Angle brackets '<' '>' used to denote the variables that will have data from Node
-DELETE 
-FROM
-    Crops_Seasons
-WHERE
-    crop_season_id = <crop_season_id>;
+SELECT Crops.name AS Crop, Seasons.name AS Season
+FROM Crops_Seasons
+INNER JOIN Crops ON Crops.crop_id = Crops_Seasons.crop_id 
+INNER JOIN Seasons on Seasons.season_id = Crops_Seasons.season_id;
