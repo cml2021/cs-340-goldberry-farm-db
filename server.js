@@ -159,7 +159,7 @@ app.delete("/delete-seed", function(req, res) {
 // CROPS
 
 app.get("/crops", function (req, res) {
-	let listCrops = "SELECT Crops.crop_id AS ID, Crops.name AS Name, Crops.quantity AS Quantity, Crops.unit_price AS UnitPrice, Crops.year AS Year FROM Crops;"
+	let listCrops = "SELECT Crops.crop_id AS ID, Crops.name AS Name, Crops.quantity AS Quantity, Crops.unit_price AS UnitPrice, Crops.year AS Year, Seeds.name AS Seed FROM Crops INNER JOIN Seeds ON Seeds.seed_id = Crops.seed_id;"
 	let listSeeds = "SELECT Seeds.seed_id, Seeds.name FROM Seeds;"
 	
 	db.pool.query(listCrops, function(error, rows, fields) {
