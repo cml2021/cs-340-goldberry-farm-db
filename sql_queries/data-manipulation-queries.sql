@@ -117,6 +117,11 @@ WHERE Sales.sale_id = :sale_id_input;
 SELECT customer_id AS ID, name AS Name, address AS Address, city AS City, state AS State, zipcode AS Zipcode, email AS Email 
 FROM Customers;
 
+-- Query for search for a customer
+-- Angle brackets '<' '>' used to denote the variables that will have data from Node
+SELECT customer_id AS ID, name AS Name, address AS Address, city AS City, state AS State, zipcode AS Zipcode, email AS Email 
+FROM Customers WHERE name LIKE <customer-search-name>;
+
 -- Query for add a new customer
 -- Angle brackets '<' '>' used to denote the variables that will have data from Node
 INSERT INTO Customers (name, address, city, state, zipcode, email)
