@@ -259,6 +259,21 @@ app.post("/add-customer", function(req, res) {
 	})
 });
 
+app.post("/search-customer", function(req, res) {
+	let searchCustomer = `SELECT customer_id, name FROM Customers WHERE name LIKE ?`
+
+	data = req.body
+	const customerName = req.body.customerName;
+
+	db.pool.query(searchCustomer, [customerName], function(error, rows, fields) {
+		if (error) {
+			handleError(error);
+		} else {
+			res.json(rows);
+		}
+	})
+});
+
 // CROPS_SEASONS
 
 app.get("/crops-seasons", function (req, res) {

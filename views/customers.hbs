@@ -1,5 +1,21 @@
 <h1>Manage Customers</h1>
 
+<div id="search-customers">
+    <h2>Search for a customer ID</h2>
+    <form id="search-customer-form">
+        <fieldset>
+            <label for="search-customer-name">
+                Enter customer name to look up their ID: 
+                <input type="text" name="search-customer-name" id="search-customer-name" required>
+            </label>
+        </fieldset>
+        <input type="submit">
+    </form>
+    <p id="customer-search-result"></p>
+</div>
+
+<script src="./js/search_customer.js"></script>
+
 <div id="list-customers">
     <h2>Customers</h2>
     <table id="customer-list-table">
