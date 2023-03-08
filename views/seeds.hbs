@@ -39,16 +39,18 @@
             <label for="growth-days">Days to Grow
                 <input type="number" name="growth-days" id="growth-days" required>
             </label>
-            <label for="can-regrow">Can it Regrow? (0 = no, 1 = yes)
-                <input type="number" name="can-regrow" id="can-regrow" required>
+            <label for="can-regrow">Can it Regrow?
+                <select name="can-regrow" id="can-regrow" required>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
             </label>
             <label for="related-crop">Related Crop
                 <select name="related-crop" id="related-crop">
-                    <option value="-999">Select a Crop</option>
                     {{#each crops}}
                     <option value="{{this.crop_id}}">{{this.name}}</option>
                     {{/each}}
-                    <option value="none">none</option>
+                    <option value="-999">none</option>
                 </select>
             </label>
         </fieldset>
