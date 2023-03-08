@@ -231,14 +231,28 @@ app.get("/sales", function (req, res) {
 
 app.get("/customers", function (req, res) {
 	let listCustomers = 'SELECT customer_id AS ID, name AS Name, address AS Address, city AS City, state AS State, zipcode AS Zipcode, email AS Email FROM Customers;'
+	let searchCustomers = `SELECT customer_id AS ID, name AS Name, address AS Address, city AS City, state AS State, zipcode AS Zipcode, email AS Email FROM Customers WHERE name LIKE ?`
 
-	db.pool.query(listCustomers, function(error, rows, fields) {
-		if (error) {
-			handleError(error);
-		} else {
-			res.render('customers', {data: rows});
-		}
-	})
+	if (req.query['search-customer-name'] === undefined || req.query['search-customer-name'] === '') {
+		db.pool.query(listCustomers, function(error, rows, fields) {
+			if (error) {
+				handleError(error);
+			} else {
+				res.render('customers', {data: rows});
+			}
+		})
+	} else {
+
+		const customerName = req.query['search-customer-name']
+
+		db.pool.query(searchCustomers, [customerName], function(error, rows, fields) {
+			if (error) {
+				handleError(error)
+			} else {
+				res.render('customers', {data: rows});
+			}
+		})
+	}
 });
 
 app.post("/add-customer", function(req, res) {
@@ -259,17 +273,17 @@ app.post("/add-customer", function(req, res) {
 	})
 });
 
-app.post("/search-customer", function(req, res) {
-	let searchCustomer = `SELECT customer_id, name FROM Customers WHERE name LIKE ?`
+app.post("/search-customer", async function(req, res) {
+	let searchCustomer = `SELECT customer_id AS ID, name AS Name, address AS Address, city AS City, state AS State, zipcode AS Zipcode, email AS Email FROM Customers WHERE name LIKE ?`
 
 	data = req.body
 	const customerName = req.body.customerName;
 
-	db.pool.query(searchCustomer, [customerName], function(error, rows, fields) {
+	await db.pool.query(searchCustomer, [customerName], function(error, rows, fields) {
 		if (error) {
 			handleError(error);
 		} else {
-			res.json(rows);
+		 	res.render({data: rows})
 		}
 	})
 });
