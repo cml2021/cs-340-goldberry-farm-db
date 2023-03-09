@@ -248,6 +248,87 @@ app.post("/add-sale", function(req, res) {
 	});
 });
 
+// app.patch("/update-sale", function(req, res) {
+// 	const data = req.body;
+
+// 	const saleId = parseInt(data.saleId);
+// 	const customerName = data.customerName;
+// 	const cropName = data.cropName;
+// 	const saleQuantity = parseInt(data.saleQuantity);
+// 	const salePrice = parseInt(data.salePrice);
+// 	const saleDate = parseInt(data.saleDate);
+// 	const shippingStatus = parseInt(data.shippingStatus);
+
+// 	getCurrentRelatedCropId = `SELECT Crops.crop_id FROM Crops WHERE Crops.seed_id = ?;`
+// 	updateSeed = `UPDATE Seeds SET name = ?, price = ?, growth_days = ?, can_regrow = ? WHERE seed_id = ?;`
+// 	removeRelatedCrop = `DELETE FROM Crops WHERE Crops.crop_id = ?;`
+// 	addRelatedCrop = `UPDATE Crops SET Crops.seed_id = ? WHERE Crops.crop_id = ?;`
+
+// 	// check if the seed being updated already has a related crop
+// 	db.pool.query(getCurrentRelatedCropId, [seedId], function(error, rows, fields) {
+// 		if (error) {
+// 			handleError(error);
+// 		} else {
+// 			const hasCurrentRelatedCrop = rows.length > 0 ? true : false;
+// 			const currentRelatedCropId = hasCurrentRelatedCrop === true ? rows[0].crop_id : -999;
+
+// 			// update the seed
+// 			db.pool.query(updateSeed, [name, price, growthDays, canRegrow, seedId], function(error, rows, fields) {
+// 				if (error) {
+// 					handleError(error);
+				
+// 				// if there is no change to the seed's related crop on UPDATE, return
+// 				} else if (currentRelatedCropId === relatedCropId) {
+// 					res.body = JSON.stringify(data);
+// 					res.sendStatus(200);
+				
+// 				// if a seed previously had a related crop and this was set to None on UPDATE, remove the relationship
+// 				// NOTE: this will also delete the crop since Crops.seed_id cannot be null
+// 				} else if (hasCurrentRelatedCrop === true && relatedCropId === -999) {
+// 					db.pool.query(removeRelatedCrop, [currentRelatedCropId], function(error, rows, fields) {
+// 						if (error) {
+// 							handleError(error);
+// 						} else {
+// 							res.body = JSON.stringify(data);
+// 							res.sendStatus(200);
+// 						}
+// 					})
+				
+// 				// if a seed had no related crop and this was set to some crop_id on UPDATE, add the relationship
+// 				} else if (hasCurrentRelatedCrop === false && relatedCropId != -999) {
+// 					db.pool.query(addRelatedCrop, [seedId, relatedCropId], function(error, rows, fields) {
+// 						if (error) {
+// 							handleError(error);
+// 						} else {
+// 							res.body = JSON.stringify(data);
+// 							res.sendStatus(200);
+// 						}
+// 					})
+
+// 				// if a seed previously had a related crop and this was set to a different crop_id on UPDATE, 
+// 				// remove the previous relationship and create a new relationship with the new related crop
+// 				// NOTE: this will also delete the previous related crop since Crops.seed_id cannot be null
+// 				} else {
+// 					db.pool.query(removeRelatedCrop, [currentRelatedCropId], function(error, rows, fields) {
+// 						if (error) {
+// 							handleError(error);
+// 						} else {
+// 							db.pool.query(addRelatedCrop, [seedId, relatedCropId], function(error, rows, fields) {
+// 								if (error) {
+// 									handleError(error);
+// 								} else {
+// 									res.body = JSON.stringify(data);
+// 									res.sendStatus(200);
+// 								}
+// 							})
+// 						}
+// 					})
+// 				}
+// 			}
+// 		)}
+// 	})
+// });
+
 // CUSTOMERS
 
 app.get("/customers", function (req, res) {
