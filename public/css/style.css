@@ -5,6 +5,10 @@ body {
 	margin: 20px;
 }
 
+p {
+	width: 50%;
+}
+
 a:link, a:visited{
 	text-decoration: none;
 	padding: 8px;
