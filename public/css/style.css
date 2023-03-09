@@ -1,7 +1,60 @@
+body {
+	background-color: #adcfff;
+	font-family: sans-serif;
+	color: #03234f;
+	margin: 20px;
+}
+
+a:link, a:visited{
+	text-decoration: none;
+	padding: 8px;
+	margin-right: 3px;
+	color: #03234f;
+	background-color: #7f9ec9;
+	border-radius: 8px;
+	transition-duration: 0.4s;
+}
+
+a:hover {
+	background-color: #276696;
+	color: white;
+	border-radius: 8px;
+}
+
 table,
 th,
 td {
 	border: 1px solid;
 	border-collapse: collapse;
 	padding: 3px 5px;
+	background-color: #cfe3ff;
+}
+
+select, input {
+	border: none;
+	margin: 5px;
+	border-radius: 8px;
+	padding: 3px;
+}
+
+fieldset {
+	padding: 15px;
+	margin: 8px;
+	border: 2px solid #03234f;
+	border-radius: 8px;
+}
+
+button {
+	color: #03234f;
+	background-color: #7f9ec9;
+	border-radius: 8px;
+	border: none;
+	padding: 8px;
+	transition-duration: 0.4s;
+}
+
+button:hover {
+	background-color: #276696;
+	color: white;
+	border-radius: 8px;
 }
