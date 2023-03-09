@@ -222,13 +222,12 @@ app.get("/sales", function (req, res) {
 
 	db.pool.query(listSales, function(error, rows, fields){
 		let sales = rows;
-		db.pool.query(getCropName, (error, rows, fields) => {
-			let crops = rows;
-			return res.render('sales', {data: sales, crops: crops});
-		})
-		db.pool.query(getCustomerName, function(error, rows, fields) => {
+		db.pool.query(getCustomerName, (error, rows, fields) => {
 			let customers = rows;
-			return res.render('sales', {data: sales, customers: customers});
+			db.pool.query(getCropName, (error, rows, fields) => {
+				let crops = rows;
+				return res.render('sales', {data: sales, customers: customers, crops: crops});
+			})
 		})
 	})
 });
