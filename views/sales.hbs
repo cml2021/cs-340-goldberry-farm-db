@@ -27,3 +27,38 @@
         </tbody>
     </table>
 </div>
+
+<div id="add-sale">
+    <h2>Add Sale</h2>
+    <form id="add-sale-form" method="POST" action="/add-sale">
+        <fieldset>
+            <label for="customer-name">Customer Name
+                <input type="text" name="customer-name" id="customer-name" required>
+            </label>
+            <label for="crop-name">Crop Name
+                <select name="crop-name" id="crop-name">
+                    <option value="">Select a Crop</option>
+                    {{#each crops}}
+                    <option value="{{this.crop_id}}">{{this.name}}</option>
+                    {{/each}}
+                </select>
+            </label>
+            <label for="sale-quantity">Sale Quantity
+                <input type="number" name="sale-quantity" id="sale-quantity" required>
+            </label>
+            <label for="sale-price">Sale Price
+                <input type="number" name="sale-price" id="sale-price" required>
+            </label>
+            <label for="sale-date">Sale Date
+                <input type="date" name="sale-date" id="sale-date" required>
+            </label>
+            <label for="shipping-status">Shipping Status
+                <select name="shipping-status" id="shipping-status" required>
+                    <option value="0">Not Shipped</option>
+                    <option value="1">Shipped</option>
+                </select>
+            </label>
+        </fieldset>
+        <button type="submit" value="submit">Add Sale</button>
+    </form>
+</div>

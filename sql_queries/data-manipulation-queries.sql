@@ -95,7 +95,7 @@ LEFT JOIN Crops ON Sales.crop_id = Crops.crop_id;
 
 -- Query for create a new sale (TODO: update this when implemented)
 -- Angle brackets '<' '>' used to denote the variables that will have data from Node
-INSERT INTO Sales (Sales.sale_id, customer, crop, Sales.quantity, Sales.price, Sales.date, shipping_status)
+INSERT INTO Sales (customer, crop, Sales.quantity, Sales.price, Sales.date, shipping_status)
 VALUES (<customer_name>, <crop_name>, <sale_quantity>, <sale_price>, <sale_date>, <sale_is_shipped>);
 
 -- delete (TODO: update this when implemented or delete if not implemented)

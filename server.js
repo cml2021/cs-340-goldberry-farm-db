@@ -217,14 +217,36 @@ app.get("/sales", function (req, res) {
 	let listSales = `SELECT Sales.sale_id AS ID, Customers.name AS Customer, Crops.name AS Crop, Sales.quantity AS Quantity, Sales.price AS Price, Sales.date AS Date, Sales.is_shipped AS ShippingStatus FROM Sales
 					INNER JOIN Customers ON Sales.customer_id = Customers.customer_id
 					LEFT JOIN Crops ON Sales.crop_id = Crops.crop_id;`;
+	let getCustomerName = `SELECT Customers.customer_id, Customers.name FROM Customers;`;
+	let getCropName = `SELECT Crops.crop_id, Crops.name FROM Crops;`;
 
 	db.pool.query(listSales, function(error, rows, fields){
+		let sales = rows;
+		db.pool.query(getCropName, (error, rows, fields) => {
+			let crops = rows;
+			return res.render('sales', {data: sales, crops: crops});
+		})
+		db.pool.query(getCustomerName, function(error, rows, fields) => {
+			let customers = rows;
+			return res.render('sales', {data: sales, customers: customers});
+		})
+	})
+});
+
+app.post("/add-sale", function(req, res) {
+	let data = req.body;
+
+	let addSale = `INSERT INTO Sales (customer_id, crop_id, quantity, price, date, is_shipped)
+					VALUES ('${data['customer-name']}', '${data['crop-name']}', '${data['sale-quantity']}', '${data['sale-price']}', '${data['sale-date']}', '${data['shipping-status']}');`;
+
+	db.pool.query(addSale, function(error, rows, fields){
 		if (error) {
 			handleError(error);
-		} else {
-			res.render('sales', {data: rows});
 		}
-	})
+		else {
+			res.redirect('/sales');
+		};
+	});
 });
 
 // CUSTOMERS
