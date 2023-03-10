@@ -56,6 +56,24 @@
                 </select>
             </label>
         </fieldset>
-        <input type="submit" />
+        <button type="submit" value="submit">Add Crop</button>
     </form>
 </div>
+
+<div id="delete-crop">
+    <h2>Delete Crop</h2>
+    <form id="delete-crop-form">
+        <fieldset>
+            <label for="selected-crop">Select a crop to delete
+                <select name="selected-crop" id="crop-to-delete">
+                    {{#each data}}
+                    <option value="{{this.ID}}">{{this.ID}}: {{this.Name}}</option>
+                    {{/each}}
+                </select>
+            </label>
+            </fieldset>
+        <button type="submit" value="submit">Delete Crop</button>
+    </form>
+</div>
+
+<script src="./js/delete-crop.js"></script>

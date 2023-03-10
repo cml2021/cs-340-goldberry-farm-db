@@ -187,6 +187,21 @@ app.post("/add-crop", function(req, res) {
 	});
 });
 
+app.delete("/delete-crop", function(req, res) {
+	const data = req.body
+	const cropId = parseInt(data.cropId);
+
+	deleteCrop = `DELETE FROM Crops WHERE crop_id = ?;`
+
+	db.pool.query(deleteCrop, [cropId], function(error, rows, fields) {
+		if (error) {
+			handleError(error);
+		} else {
+			res.sendStatus(204);
+		}
+	})
+});
+
 // SEASONS
 
 app.get("/seasons", function (req, res) {
