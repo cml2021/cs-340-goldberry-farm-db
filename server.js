@@ -248,6 +248,21 @@ app.post("/add-sale", function(req, res) {
 	});
 });
 
+app.delete("/delete-sale", function(req, res) {
+	const data = req.body
+	const saleId = parseInt(data.saleId);
+
+	deleteSale = `DELETE FROM Sales WHERE sale_id = ?;`
+
+	db.pool.query(deleteSale, [saleId], function(error, rows, fields) {
+		if (error) {
+			handleError(error);
+		} else {
+			res.sendStatus(204);
+		}
+	})
+});
+
 // app.patch("/update-sale", function(req, res) {
 // 	const data = req.body;
 
