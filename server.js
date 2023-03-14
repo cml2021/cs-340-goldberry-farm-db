@@ -71,10 +71,10 @@ app.patch("/update-seed", function (req, res) {
 	const canRegrow = parseInt(data.canRegrow);
 	const relatedCropId = parseInt(data.relatedCropId);
 
-	getCurrentRelatedCropId = `SELECT Crops.crop_id FROM Crops WHERE Crops.seed_id = ?;`
-	updateSeed = `UPDATE Seeds SET name = ?, price = ?, growth_days = ?, can_regrow = ? WHERE seed_id = ?;`
-	removeRelatedCrop = `DELETE FROM Crops WHERE Crops.crop_id = ?;`
-	addRelatedCrop = `UPDATE Crops SET Crops.seed_id = ? WHERE Crops.crop_id = ?;`
+	let getCurrentRelatedCropId = `SELECT Crops.crop_id FROM Crops WHERE Crops.seed_id = ?;`
+	let updateSeed = `UPDATE Seeds SET name = ?, price = ?, growth_days = ?, can_regrow = ? WHERE seed_id = ?;`
+	let removeRelatedCrop = `DELETE FROM Crops WHERE Crops.crop_id = ?;`
+	let addRelatedCrop = `UPDATE Crops SET Crops.seed_id = ? WHERE Crops.crop_id = ?;`
 
 	// check if the seed being updated already has a related crop
 	db.pool.query(getCurrentRelatedCropId, [seedId], function (error, rows, fields) {
@@ -243,6 +243,30 @@ app.post("/add-crop", function (req, res) {
 		});
 	}
 });
+
+app.patch("/update-crop", function (req, res) {
+	const data = req.body;
+	
+	const cropId = parseInt(data.cropId);
+	const cropName = data.cropName;
+	const cropQuantity = parseInt(data.cropQuantity);
+	const cropUnitPrice = parseInt(data.cropUnitPrice);
+	const cropYear = parseInt(data.cropYear);
+	const cropRelatedSeedId = parseInt(data.cropRelatedSeedId);
+	// const cropRelatedSeasonIds = data.cropRelatedSeasonIdsValue;
+
+	let updateCrop = `UPDATE Crops SET Crops.name = ?, Crops.quantity = ?, Crops.unit_price = ?, Crops.year = ?, Crops.seed_id = ? WHERE Crops.crop_id = ?;`;
+	
+	// update the crop
+	db.pool.query(updateCrop, [cropName, cropQuantity, cropUnitPrice, cropYear, cropRelatedSeedId, cropId], function (error, rows, fields) {
+		if (error) {
+			handleError(error);
+		} else {
+			res.body = JSON.stringify(data);
+			res.sendStatus(200);
+		}
+	})
+})
 
 app.delete("/delete-crop", function (req, res) {
 	const data = req.body

@@ -106,12 +106,12 @@
             <br>
             <p>Growing Season(s): <b>required</b> - please select at least one</p>
             {{#each seasons}}
-            <input type="checkbox" id="{{this.season_id}}" name="update-related-season" value="{{this.season_id}}">
+            <input type="checkbox" id="update-related-season" name="update-related-season" value="{{this.season_id}}">
             <label for="update-related-season">{{this.name}}</label>
             <br>
             {{/each}}
         </fieldset>
-        <button type="submit" value="submit">Update Crop</button>
+        <input type="submit">
     </form>
 </div>
 
@@ -131,4 +131,5 @@
     </form>
 </div>
 
+<script src="./js/update_crop.js"></script>
 <script src="./js/delete-crop.js"></script>
