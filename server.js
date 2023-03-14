@@ -160,31 +160,85 @@ app.delete("/delete-seed", function (req, res) {
 // CROPS
 
 app.get("/crops", function (req, res) {
-	let listCrops = "SELECT Crops.crop_id AS ID, Crops.name AS Name, Crops.quantity AS Quantity, Crops.unit_price AS UnitPrice, Crops.year AS Year, Seeds.name AS Seed FROM Crops INNER JOIN Seeds ON Seeds.seed_id = Crops.seed_id;"
-	let listSeeds = "SELECT Seeds.seed_id, Seeds.name FROM Seeds;"
+	let listCrops = "SELECT Crops.crop_id AS ID, Crops.name AS Name, Crops.quantity AS Quantity, Crops.unit_price AS UnitPrice, Crops.year AS Year, Seeds.name AS Seed FROM Crops INNER JOIN Seeds ON Seeds.seed_id = Crops.seed_id;";
+	let listSeeds = "SELECT Seeds.seed_id, Seeds.name FROM Seeds;";
+	let listSeasons = "SELECT Seasons.season_id, Seasons.name FROM Seasons;";
 
 	db.pool.query(listCrops, function (error, rows, fields) {
-		let crops = rows;
+		if (error) {
+			handleError(error);
+		} else {
+			let crops = rows;
 
-		db.pool.query(listSeeds, (error, rows, fields) => {
-			let seeds = rows;
-			return res.render('crops', { data: crops, seeds: seeds });
-		});
+			db.pool.query(listSeeds, (error, rows, fields) => {
+				if (error) {
+					handleError(error);
+				} else {
+					let seeds = rows;
+
+					db.pool.query(listSeasons, (error, rows, fields) => {
+						if (error) {
+							handleError(error);
+						} else {
+							let seasons = rows;
+
+							return res.render('crops', { data: crops, seeds: seeds, seasons: seasons });
+						}
+					})
+				}
+			});
+		}
 	})
 });
 
 app.post("/add-crop", function (req, res) {
 	let data = req.body;
 
+	const hasRelatedSeason = data["related-season"] == undefined ? false : true;
+
 	let addCrop = `INSERT INTO Crops (name, quantity, unit_price, year, seed_id) VALUES ('${data['crop-name']}', '${data['crop-quantity']}', '${data['crop-unit-price']}', '${data['crop-year']}', '${data['related-seed']}');`;
 
 	db.pool.query(addCrop, function (error, rows, fields) {
 		if (error) {
 			handleError(error);
-		}
-		else {
+
+		// no related seasons
+		} else if (hasRelatedSeason === false) {
 			res.redirect('/crops');
-		};
+
+		} else {
+			const insertedCropId = rows.insertId;
+			const seasonIds = data["related-season"]
+
+			// single related season
+			if (Array.isArray(data["related-season"]) === false) {
+				const seasonId = seasonIds
+				let addCropSeason = `INSERT INTO Crops_Seasons (crop_id, season_id) VALUES ('${insertedCropId}','${seasonId}');`
+
+				db.pool.query(addCropSeason, function (error, row, fields) {
+					if (error) {
+						handleError(error);
+					} else {
+						res.redirect('/crops');
+					}
+				});
+			
+			// multiple related seasons
+			} else {
+
+				for (const seasonId of seasonIds) {
+					
+					let addCropSeason = `INSERT INTO Crops_Seasons (crop_id, season_id) VALUES ('${insertedCropId}','${seasonId}');`;
+					
+					db.pool.query(addCropSeason, function (error, row, fields) {
+						if (error) {
+							handleError(error);
+						}
+					})
+				}
+				res.redirect('/crops');
+			}
+		}
 	});
 });
 

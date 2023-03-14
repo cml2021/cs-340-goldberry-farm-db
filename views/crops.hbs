@@ -55,6 +55,13 @@
                     {{/each}}
                 </select>
             </label>
+            <br>
+            <p>Growing Season(s): select at least one</p>
+            {{#each seasons}}
+            <input type="checkbox" id="{{this.season_id}}" name="related-season" value="{{this.season_id}}">
+            <label for="related-season">{{this.name}}</label>
+            <br>
+            {{/each}}
         </fieldset>
         <button type="submit" value="submit">Add Crop</button>
     </form>

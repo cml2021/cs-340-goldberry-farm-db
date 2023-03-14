@@ -67,7 +67,7 @@ WHERE Crops.crop_id = <cropId>;
 -- Query to delete a crop
 -- Angle brackets '<' '>' used to denote the variables that will have data from Node
 DELETE FROM Crops 
-WHERE Crops.id = <cropId>;
+WHERE Crops.crop_id = <cropId>;
 
 ------------------------------------------------------------------------------------
 -- SEASONS
