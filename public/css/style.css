@@ -62,3 +62,7 @@ button:hover {
 	color: white;
 	border-radius: 8px;
 }
+
+footer {
+	padding: 5px 3px;
+}
