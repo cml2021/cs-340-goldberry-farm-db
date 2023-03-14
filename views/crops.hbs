@@ -106,7 +106,7 @@
             <br>
             <p>Growing Season(s): <b>required</b> - please select at least one</p>
             {{#each seasons}}
-            <input type="checkbox" id="update-related-season" name="update-related-season" value="{{this.season_id}}">
+            <input type="checkbox" id="{{this.season_id}}" name="update-related-season" value="{{this.season_id}}">
             <label for="update-related-season">{{this.name}}</label>
             <br>
             {{/each}}

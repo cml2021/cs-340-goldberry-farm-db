@@ -10,7 +10,16 @@ updateCropForm.addEventListener("submit", function (e) {
     const cropUnitPrice = document.getElementById('update-crop-unit-price');
     const cropYear = document.getElementById('update-crop-year');
     const cropRelatedSeedId = document.getElementById('update-related-seed');
-    // const cropRelatedSeasonIds = document.getElementById('update-related-season');
+    const cropSeasons = document.getElementsByName('update-related-season');
+
+    // build list of selected seasons
+    const cropRelatedSeasonIds = [];
+
+    for (const node of cropSeasons) {
+        if (node.checked === true) {
+            cropRelatedSeasonIds.push(node.value);
+        }
+    }
 
     const cropIdValue = cropId.value;
     const cropNameValue = cropName.value;
@@ -18,7 +27,7 @@ updateCropForm.addEventListener("submit", function (e) {
     const cropUnitPriceValue = cropUnitPrice.value;
     const cropYearValue = cropYear.value;
     const cropRelatedSeedIdValue = cropRelatedSeedId.value;
-    // const cropRelatedSeasonIdsValue = cropRelatedSeasonIds.value;
+    const cropRelatedSeasonIdsValue = cropRelatedSeasonIds;
 
     const data = {
         cropId: cropIdValue,
@@ -27,7 +36,7 @@ updateCropForm.addEventListener("submit", function (e) {
         cropUnitPrice: cropUnitPriceValue,
         cropYear: cropYearValue,
         cropRelatedSeedId: cropRelatedSeedIdValue,
-        // cropRelatedSeasonIds: cropRelatedSeasonIdsValue
+        cropRelatedSeasonIds: cropRelatedSeasonIdsValue
     }
 
     const updateCrop = async () => {

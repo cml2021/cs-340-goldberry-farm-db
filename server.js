@@ -253,7 +253,7 @@ app.patch("/update-crop", function (req, res) {
 	const cropUnitPrice = parseInt(data.cropUnitPrice);
 	const cropYear = parseInt(data.cropYear);
 	const cropRelatedSeedId = parseInt(data.cropRelatedSeedId);
-	// const cropRelatedSeasonIds = data.cropRelatedSeasonIdsValue;
+	const cropRelatedSeasonIds = data.cropRelatedSeasonIdsValue;
 
 	let updateCrop = `UPDATE Crops SET Crops.name = ?, Crops.quantity = ?, Crops.unit_price = ?, Crops.year = ?, Crops.seed_id = ? WHERE Crops.crop_id = ?;`;
 	
