@@ -56,7 +56,7 @@
                 </select>
             </label>
             <br>
-            <p>Growing Season(s): select at least one</p>
+            <p>Growing Season(s): <b>required</b> - please select at least one</p>
             {{#each seasons}}
             <input type="checkbox" id="{{this.season_id}}" name="related-season" value="{{this.season_id}}">
             <label for="related-season">{{this.name}}</label>

@@ -198,48 +198,50 @@ app.post("/add-crop", function (req, res) {
 
 	let addCrop = `INSERT INTO Crops (name, quantity, unit_price, year, seed_id) VALUES ('${data['crop-name']}', '${data['crop-quantity']}', '${data['crop-unit-price']}', '${data['crop-year']}', '${data['related-seed']}');`;
 
-	db.pool.query(addCrop, function (error, rows, fields) {
-		if (error) {
-			handleError(error);
+	if (hasRelatedSeason === false) {
+		console.log('Please select at least one season.');
+		res.redirect('/crops');
 
-		// no related seasons
-		} else if (hasRelatedSeason === false) {
-			res.redirect('/crops');
-
-		} else {
-			const insertedCropId = rows.insertId;
-			const seasonIds = data["related-season"]
-
-			// single related season
-			if (Array.isArray(data["related-season"]) === false) {
-				const seasonId = seasonIds
-				let addCropSeason = `INSERT INTO Crops_Seasons (crop_id, season_id) VALUES ('${insertedCropId}','${seasonId}');`
-
-				db.pool.query(addCropSeason, function (error, row, fields) {
-					if (error) {
-						handleError(error);
-					} else {
-						res.redirect('/crops');
-					}
-				});
-			
-			// multiple related seasons
+	} else {
+		db.pool.query(addCrop, function (error, rows, fields) {
+			if (error) {
+				handleError(error);
+	
 			} else {
-
-				for (const seasonId of seasonIds) {
-					
-					let addCropSeason = `INSERT INTO Crops_Seasons (crop_id, season_id) VALUES ('${insertedCropId}','${seasonId}');`;
-					
+				const insertedCropId = rows.insertId;
+				const seasonIds = data["related-season"]
+	
+				// single related season
+				if (Array.isArray(data["related-season"]) === false) {
+					const seasonId = seasonIds
+					let addCropSeason = `INSERT INTO Crops_Seasons (crop_id, season_id) VALUES ('${insertedCropId}','${seasonId}');`
+	
 					db.pool.query(addCropSeason, function (error, row, fields) {
 						if (error) {
 							handleError(error);
+						} else {
+							res.redirect('/crops');
 						}
-					})
+					});
+				
+				// multiple related seasons
+				} else {
+	
+					for (const seasonId of seasonIds) {
+						
+						let addCropSeason = `INSERT INTO Crops_Seasons (crop_id, season_id) VALUES ('${insertedCropId}','${seasonId}');`;
+						
+						db.pool.query(addCropSeason, function (error, row, fields) {
+							if (error) {
+								handleError(error);
+							}
+						})
+					}
+					res.redirect('/crops');
 				}
-				res.redirect('/crops');
 			}
-		}
-	});
+		});
+	}
 });
 
 app.delete("/delete-crop", function (req, res) {
