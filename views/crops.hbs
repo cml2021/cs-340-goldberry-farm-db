@@ -67,6 +67,54 @@
     </form>
 </div>
 
+<div id="update-crop">
+    <h2>Update Crop</h2>
+    <form id="update-crop-form">
+        <fieldset>
+            <label for="selected-crop">Select a crop to update
+                <select name="selected-crop" id="crop-to-update">
+                    {{#each data}}
+                    <option value="{{this.ID}}">{{this.ID}}: {{this.Name}}</option>
+                    {{/each}}
+                </select>
+            </label>
+            <br>
+            <label for="crop-name">Name
+                <input type="text" name="crop-name" id="update-crop-name" minlength="1" maxlength="30" required>
+            </label>
+            <br>
+            <label for="crop-quantity">Quantity
+                <input type="number" name="crop-quantity" id="update-crop-quantity" min="0" max="9999" required>
+            </label>
+            <br>
+            <label for="crop-unit-price">Unit Price
+                <input type="number" name="crop-unit-price" id="update-crop-unit-price" min="0" max="9999" required>
+            </label>
+            <br>
+            <label for="crop-year">Year
+                <input type="number" name="crop-year" id="update-crop-year" min="0" max="9999" required>
+            </label>
+            <br>
+            <label for="related-seed">Related Seed
+                <select name="related-seed" id="update-related-seed" required>
+                    <option value="">Select a Seed</option>
+                    {{#each seeds}}
+                    <option value="{{this.seed_id}}">{{this.name}}</option>
+                    {{/each}}
+                </select>
+            </label>
+            <br>
+            <p>Growing Season(s): <b>required</b> - please select at least one</p>
+            {{#each seasons}}
+            <input type="checkbox" id="{{this.season_id}}" name="update-related-season" value="{{this.season_id}}">
+            <label for="update-related-season">{{this.name}}</label>
+            <br>
+            {{/each}}
+        </fieldset>
+        <button type="submit" value="submit">Update Crop</button>
+    </form>
+</div>
+
 <div id="delete-crop">
     <h2>Delete Crop</h2>
     <form id="delete-crop-form">
