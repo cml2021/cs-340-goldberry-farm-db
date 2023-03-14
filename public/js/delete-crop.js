@@ -17,7 +17,7 @@ deleteCropForm.addEventListener("submit", function(e) {
             headers: {
                 "Content-type": "application/json"
             },
-            body: JSON.stringify(saleData)
+            body: JSON.stringify(cropData)
         });
         if (response.status == 204) {
             window.location.reload();
