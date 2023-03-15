@@ -1,3 +1,4 @@
+// This module is adapted from the NodeJS Starter App code
 const updateSaleForm = document.getElementById('update-sale-form');
 
 updateSaleForm.addEventListener("submit", function (e) {

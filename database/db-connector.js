@@ -1,3 +1,4 @@
+// This module is adapted from the NodeJS Starter App code
 const mysql = require('mysql')
 
 // Create a 'connection pool' using the provided credentials

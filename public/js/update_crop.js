@@ -1,3 +1,4 @@
+// This module is adapted from the NodeJS Starter App code
 const updateCropForm = document.getElementById('update-crop-form');
 
 updateCropForm.addEventListener("submit", function (e) {
@@ -13,6 +14,7 @@ updateCropForm.addEventListener("submit", function (e) {
     const cropSeasons = document.getElementsByName('update-related-season');
 
     // build list of selected seasons
+    // this logic is original work
     const cropRelatedSeasonIds = [];
 
     for (const node of cropSeasons) {

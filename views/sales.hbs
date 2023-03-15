@@ -1,3 +1,4 @@
+{{!-- This file is adapted from the NodeJS Starter App code --}}
 <h1>Manage Sales</h1>
 
 <div id="list-sales">
@@ -85,58 +86,3 @@
 </div>
 
 <script src="./js/delete-sale.js"></script>
-
-{{!-- <div id="update-sale">
-    <h2>Update Sale</h2>
-    <form id="update-sale-form">
-        <fieldset>
-            <label for="selected-sale">Select a sale to update
-                <select name="selected-sale" id="sale-to-update">
-                    {{#each data}}
-                    <option value="{{this.ID}}">{{this.ID}}: {{this.Customer}}</option>
-                    {{/each}}
-                </select>
-            </label>
-            <br>
-            <label for="customer-name">Customer Name
-                <select name="customer-name" id="updated-customer-name">
-                    <option value="">Select a Customer</option>
-                    {{#each customers}}
-                    <option value="{{this.customer_id}}">{{this.name}}</option>
-                    {{/each}}
-                </select>
-            </label>
-            <br>
-            <label for="crop-name">Crop Name
-                <select name="crop-name" id="updated-crop-name">
-                    <option value="">Select a Crop</option>
-                    {{#each crops}}
-                    <option value="{{this.crop_id}}">{{this.name}}</option>
-                    {{/each}}
-                </select>
-            </label>
-            <br>
-            <label for="sale-quantity">Sale Quantity
-                <input type="number" name="sale-quantity" id="updated-sale-quantity" required>
-            </label>
-            <br>
-            <label for="sale-price">Sale Price
-                <input type="number" name="sale-price" id="updated-sale-price" required>
-            </label>
-            <br>
-            <label for="sale-date">Sale Date
-                <input type="date" name="sale-date" id="updated-sale-date" required>
-            </label>
-            <br>
-            <label for="shipping-status">Shipping Status
-                <select name="shipping-status" id="updated-shipping-status" required>
-                    <option value="1">Shipped</option>
-                    <option selected="selected" value="0">Not Shipped</option>
-                </select>
-            </label>
-        </fieldset>
-        <button type="submit" value="submit">Update Sale</button>
-    </form>
-</div>
-
-<script src="./js/update-sale.js"></script> --}}

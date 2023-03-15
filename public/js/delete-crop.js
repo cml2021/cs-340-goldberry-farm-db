@@ -1,3 +1,4 @@
+// This module is adapted from the NodeJS Starter App code
 const deleteCropForm = document.getElementById('delete-crop-form');
 
 deleteCropForm.addEventListener("submit", function(e) {

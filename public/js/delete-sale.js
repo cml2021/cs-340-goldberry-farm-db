@@ -1,3 +1,4 @@
+// This module is adapted from the NodeJS Starter App code
 const deleteSaleForm = document.getElementById('delete-sale-form');
 
 deleteSaleForm.addEventListener("submit", function(e) {

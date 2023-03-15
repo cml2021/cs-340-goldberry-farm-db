@@ -1,3 +1,5 @@
+// This module is adapted from the NodeJS Starter App code
+
 const deleteSeedForm = document.getElementById('delete-seed-form');
 
 deleteSeedForm.addEventListener("submit", function(e) {
