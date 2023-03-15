@@ -24,6 +24,6 @@ View the app on your local server `localhost:5600` or on flip `http://flip1.engr
 
 ## Sources
 
-All code is based on the CS 340 Node JS Starter App code, with the exception of style.css and some of the endpoint logic and queries in server.js.
+All code is based on the CS 340 Node JS Starter App code, with the exception of style.css, some of the endpoint logic and queries in server.js, and some of the logic in update_crop.js.
 
 Kochera, G., et al (2022) NodeJS Starter App [Source code]. https://github.com/osu-cs340-ecampus/nodejs-starter-app
