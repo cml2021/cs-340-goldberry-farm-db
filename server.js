@@ -253,17 +253,83 @@ app.patch("/update-crop", function (req, res) {
 	const cropUnitPrice = parseInt(data.cropUnitPrice);
 	const cropYear = parseInt(data.cropYear);
 	const cropRelatedSeedId = parseInt(data.cropRelatedSeedId);
-	const cropRelatedSeasonIds = data.cropRelatedSeasonIdsValue;
+	const cropRelatedSeasonIds = data.cropRelatedSeasonIds;
 
+	let getCurrentRelatedSeasonIds = `SELECT Crops_Seasons.season_id FROM Crops_Seasons WHERE Crops_Seasons.crop_id = ?;`;
 	let updateCrop = `UPDATE Crops SET Crops.name = ?, Crops.quantity = ?, Crops.unit_price = ?, Crops.year = ?, Crops.seed_id = ? WHERE Crops.crop_id = ?;`;
+	let removeRelatedSeason = `DELETE FROM Crops_Seasons WHERE Crops_Seasons.crop_id = ? AND Crops_Seasons.season_id = ?;`;
 	
-	// update the crop
-	db.pool.query(updateCrop, [cropName, cropQuantity, cropUnitPrice, cropYear, cropRelatedSeedId, cropId], function (error, rows, fields) {
+	// get current related season IDs
+	db.pool.query(getCurrentRelatedSeasonIds, [cropId], function (error, rows, fields) {
 		if (error) {
 			handleError(error);
 		} else {
-			res.body = JSON.stringify(data);
-			res.sendStatus(200);
+			const currentRelatedSeasonIds = [];
+
+			for (const row of rows) {
+				currentRelatedSeasonIds.push(row.season_id);
+			}
+
+			// update the crop
+			db.pool.query(updateCrop, [cropName, cropQuantity, cropUnitPrice, cropYear, cropRelatedSeedId, cropId], function (error, rows, fields) {
+				if (error) {
+					handleError(error);
+				
+				// case when no change in related seasons
+				} else if (JSON.stringify(cropRelatedSeasonIds.sort()) === JSON.stringify(currentRelatedSeasonIds.sort())) {
+					res.body = JSON.stringify(data);
+					res.sendStatus(200);
+				
+				// case when related season(s) change
+				} else {
+					currentRelatedSeasonIds.sort();
+					cropRelatedSeasonIds.sort();
+
+					// add Crops_Seasons as appropriate
+					const seasonsToAdd = []
+
+					for (const season of cropRelatedSeasonIds) {
+						if (!currentRelatedSeasonIds.includes(season)) {
+							seasonsToAdd.push(season);
+						}
+					}
+
+					if (seasonsToAdd.length > 0) {
+
+						// const seasonToAddId = 0;
+						let addRelatedSeason = `INSERT INTO Crops_Seasons (crop_id, season_id) VALUES ('${cropId}', ?);`;
+
+						for (const seasonToAddId of seasonsToAdd) {
+							db.pool.query(addRelatedSeason, [seasonToAddId], function (error, rows, fields) {
+								if (error) {
+									handleError(error)
+								}
+							})
+						}
+					}
+
+					// remove Crops_Seasons as appropriate
+					const seasonsToRemove = []
+
+					for (const season of currentRelatedSeasonIds) {
+						if (!cropRelatedSeasonIds.includes(season)) {
+							seasonsToRemove.push(season);
+						}
+					}
+
+					if (seasonsToRemove.length > 0) {
+						for (const seasonToRemoveId of seasonsToRemove) {
+							db.pool.query(removeRelatedSeason, [cropId, seasonToRemoveId], function (error, rows, fields) {
+								if (error) {
+									handleError(error)
+								}
+							})
+						}
+					}
+					res.body = JSON.stringify(data);
+					res.sendStatus(200);
+				}
+			})
 		}
 	})
 })

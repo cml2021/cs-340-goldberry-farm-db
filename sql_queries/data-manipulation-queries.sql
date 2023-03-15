@@ -137,7 +137,11 @@ FROM Crops_Seasons
 INNER JOIN Crops ON Crops.crop_id = Crops_Seasons.crop_id 
 INNER JOIN Seasons on Seasons.season_id = Crops_Seasons.season_id;
 
--- Query for add a crop_season (implemented as part of Crops INSERT)
+-- Query for add a crop_season (implemented as part of Crops INSERT and UPDATE)
 -- Angle brackets '<' '>' used to denote the variables that will have data from Node
 INSERT INTO Crops_Seasons (crop_id, season_id) 
 VALUES (<crop_id>, <season_id>);
+
+-- Query for delete a crop_season (implemented as part of Crops UPDATE)
+-- Angle brackets '<' '>' used to denote the variables that will have data from Node
+DELETE FROM Crops_Seasons WHERE crop_id = <crop_id> AND season_id = <season_id>;
