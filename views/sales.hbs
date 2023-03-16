@@ -73,21 +73,3 @@
         <button type="submit" value="submit">Add Sale</button>
     </form>
 </div>
-
-<div id="delete-sale">
-    <h2>Delete Sale</h2>
-    <form id="delete-sale-form">
-        <fieldset>
-            <label for="selected-sale">Select a sale to delete
-                <select name="selected-sale" id="sale-to-delete">
-                    {{#each data}}
-                    <option value="{{this.ID}}">{{this.ID}}: {{this.Customer}}</option>
-                    {{/each}}
-                </select>
-            </label>
-            </fieldset>
-        <button type="submit" value="submit">Delete Sale</button>
-    </form>
-</div>
-
-<script src="./js/delete-sale.js"></script>

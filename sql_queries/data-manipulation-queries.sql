@@ -95,19 +95,8 @@ LEFT JOIN Crops ON Sales.crop_id = Crops.crop_id;
 
 -- Query for create a new sale (TODO: update this when implemented)
 -- Angle brackets '<' '>' used to denote the variables that will have data from Node
-INSERT INTO Sales (customer, crop, Sales.quantity, Sales.price, Sales.date, shipping_status)
-VALUES (<customer_name>, <crop_name>, <sale_quantity>, <sale_price>, <sale_date>, <sale_is_shipped>);
-
--- delete (TODO: update this when implemented or delete if not implemented)
--- Colon ':' used to denote the variables that will have data from Node
-DELETE FROM Sales WHERE Sales.sale_id = :sale_id_input;
-
--- update (TODO: update this when implemented or delete if not implemented)
--- Colon ':' used to denote the variables that will have data from Node
-UPDATE Sales
-SET customer = :customer_name_input, crop = :crop_name_input, Sales.quantity = :sale_quantity_input,
-	Sales.price = :sale_price_input, Sales.date = :sale_date_input, shippint_status = :sale_is_shipped_input
-WHERE Sales.sale_id = :sale_id_input;
+INSERT INTO Sales (customer_id, crop_id, quantity, price, date, is_shipped)
+VALUES (<customer-name>, <crop-name>, <sale-quantity>, <sale-price>, <sale-date>, <shippping-status>);
 
 ------------------------------------------------------------------------------------
 -- CUSTOMERS
