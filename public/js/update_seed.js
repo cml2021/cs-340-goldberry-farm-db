@@ -1,4 +1,4 @@
-// This module is adapted from the NodeJS Starter App code
+// This module is adapted from the NodeJS Starter App code. Date: 2/28/2023. Source: https://github.com/osu-cs340-ecampus/nodejs-starter-app
 const updateSeedForm = document.getElementById('update-seed-form');
 
 updateSeedForm.addEventListener("submit", function (e) {

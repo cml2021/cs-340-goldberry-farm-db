@@ -1,4 +1,4 @@
-// This module is adapted from the NodeJS Starter App code
+// This module is adapted from the NodeJS Starter App code. Date: 3/14/2023. Source: https://github.com/osu-cs340-ecampus/nodejs-starter-app
 const updateCropForm = document.getElementById('update-crop-form');
 
 updateCropForm.addEventListener("submit", function (e) {

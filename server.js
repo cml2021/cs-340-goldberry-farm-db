@@ -1,4 +1,4 @@
-// This module is adapted from the NodeJS Starter App Code
+// This module is adapted from the NodeJS Starter App Code. Date: 2/14/2023. Source: https://github.com/osu-cs340-ecampus/nodejs-starter-app
 
 const express = require("express");
 const path = require("path");
